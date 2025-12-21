@@ -14,6 +14,16 @@ import FirebaseFirestore
 
 class UserTableViewController: UITableViewController {
     
+    private func showUserDetails(user: AppUser) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(
+            withIdentifier: "UserDetailsViewController"
+        ) as! UserDetailsViewController
+
+        vc.user = user
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     private var users: [AppUser] = []
        private let db = Firestore.firestore()
 
@@ -31,7 +41,7 @@ class UserTableViewController: UITableViewController {
                        return
                    }
                    
-                   print("📦 Documents count:", snapshot?.documents.count ?? 0)
+                  
 
                    guard let documents = snapshot?.documents else { return }
                    
@@ -71,10 +81,16 @@ class UserTableViewController: UITableViewController {
 
         let user = users[indexPath.row]
         
+        
+        
 
         cell.nameLabel.text = user.fullName
         cell.emailLabel.text = user.email
         cell.roleLabel.text = user.role
+        
+        cell.onViewTapped = { [weak self] in
+                self?.showUserDetails(user: user)
+            }
         
 
         return cell

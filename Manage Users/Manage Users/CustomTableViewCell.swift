@@ -15,6 +15,14 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
+    @IBOutlet weak var viewButton: UIButton!
+    
+    var onViewTapped: (() -> Void)?
+
+       @IBAction func viewButtonTapped(_ sender: UIButton) {
+           print("✅ View button tapped")
+           onViewTapped?()
+       }
     
     
     override func awakeFromNib() {
