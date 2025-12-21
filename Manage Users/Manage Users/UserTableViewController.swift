@@ -14,6 +14,8 @@ import FirebaseFirestore
 
 class UserTableViewController: UITableViewController {
     
+    private var listener: ListenerRegistration?
+    
     private func showUserDetails(user: AppUser) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(
@@ -29,8 +31,32 @@ class UserTableViewController: UITableViewController {
 
        override func viewDidLoad() {
            super.viewDidLoad()
+           listenForUsers()
            fetchUsers()
        }
+    
+    private func listenForUsers() {
+        listener = db.collection("Users(Admin)")
+            .addSnapshotListener { [weak self] snapshot, error in
+
+                if let error = error {
+                    print("❌ Listener error:", error)
+                    return
+                }
+
+                self?.users = snapshot?.documents.compactMap {
+                    AppUser(document: $0)
+                } ?? []
+
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            }
+    }
+    
+    deinit {
+            listener?.remove()  // 👈 STEP 4
+        }
 
        private func fetchUsers() {
            db.collection("Users(Admin)")

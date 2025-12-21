@@ -16,6 +16,7 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var activeSwitch: UISwitch!
+    @IBOutlet weak var roleButton: UIButton!
     
     var user: AppUser!
     private let db = Firestore.firestore()
@@ -31,6 +32,14 @@ class UserDetailsViewController: UIViewController {
            ageLabel.text = String(user.age)
            roleLabel.text = user.role
            activeSwitch.isOn = user.isActive
+        
+        if user.role.lowercased() == "admin" {
+                roleButton.isEnabled = false
+                roleButton.alpha = 0.5
+            } else {
+                roleButton.isEnabled = true
+                roleButton.alpha = 1.0
+            }
        }
     
     @IBAction func activeSwitchChanged(_ sender: UISwitch) {
@@ -50,7 +59,54 @@ class UserDetailsViewController: UIViewController {
                 }
         }
     
+    @IBAction func changeRoleTapped(_ sender: UIButton) {
+        guard user != nil else { return }
+        
+        guard user.role.lowercased() != "admin" else {
+                let alert = UIAlertController(
+                    title: "Action Not Allowed",
+                    message: "Admin roles cannot be changed.",
+                    preferredStyle: .alert
+                )
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                present(alert, animated: true)
+                return
+            }
 
+        let alert = UIAlertController(
+            title: "Change Role",
+            message: "Select a new role",
+            preferredStyle: .actionSheet
+        )
+
+        ["Admin", "Donor", "Collector"].forEach { role in
+            alert.addAction(UIAlertAction(title: role.capitalized, style: .default) { _ in
+                self.updateRole(to: role)
+            })
+        }
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        present(alert, animated: true)
+    }
+    
+    private func updateRole(to newRole: String) {
+        guard let user = user else { return }
+
+        db.collection("Users(Admin)")
+            .document(user.id)
+            .updateData([
+                "role": newRole
+            ]) { error in
+                if let error = error {
+                    print("❌ Role update failed:", error)
+                } else {
+                    self.roleLabel.text = newRole
+                    print("✅ Role updated")
+                }
+            }
+    }
+    
     /*
     // MARK: - Navigation
 
