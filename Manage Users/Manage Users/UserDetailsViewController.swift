@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class UserDetailsViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var roleButton: UIButton!
+    @IBOutlet weak var deleteUserButton: UIButton!
     
     var user: AppUser!
     private let db = Firestore.firestore()
@@ -40,10 +42,35 @@ class UserDetailsViewController: UIViewController {
                 roleButton.isEnabled = true
                 roleButton.alpha = 1.0
             }
+        
+        if user.role.lowercased() == "admin" {
+                activeSwitch.isEnabled = false
+                activeSwitch.alpha = 0.5
+            } else {
+                activeSwitch.isEnabled = true
+                activeSwitch.alpha = 1.0
+            }
        }
     
     @IBAction func activeSwitchChanged(_ sender: UISwitch) {
             guard let user = user else { return }
+        
+            let currentUserId = Auth.auth().currentUser?.uid
+
+         
+          if user.role.lowercased() == "admin" && user.id == currentUserId {
+              sender.isOn = true // rollback
+              showAlert(
+                  title: "Action Not Allowed",
+                  message: "You cannot deactivate your own admin account."
+              )
+              return
+          }
+        func showAlert(title: String, message: String) {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alert, animated: true)
+        }
 
             db.collection("Users(Admin)")
                 .document(user.id)
@@ -104,6 +131,48 @@ class UserDetailsViewController: UIViewController {
                     self.roleLabel.text = newRole
                     print("✅ Role updated")
                 }
+            }
+    }
+    
+    private func configureDeleteButton() {
+        let currentUserId = Auth.auth().currentUser?.uid
+
+        if user?.id == currentUserId {
+            deleteUserButton.isHidden = true
+        }
+    }
+    
+    @IBAction func deleteUserTapped(_ sender: UIButton) {
+        guard let user = user else { return }
+
+        let alert = UIAlertController(
+            title: "Delete User",
+            message: "This action can be undone. Are you sure?",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
+            self.softDeleteUser(user)
+        })
+
+        present(alert, animated: true)
+    }
+    
+    private func softDeleteUser(_ user: AppUser) {
+        db.collection("Users(Admin)")
+            .document(user.id)
+            .updateData([
+                "isDeleted": true,
+                "deletedAt": Timestamp(date: Date())
+            ]) { error in
+                if let error = error {
+                    print("❌ Delete failed:", error)
+                    return
+                }
+
+                self.navigationController?.popViewController(animated: true)
             }
     }
     

@@ -21,17 +21,31 @@ struct AppUser {
     var fullName: String {
         "\(firstName) \(lastName)"
     }
+    
+    let isDeleted: Bool
+    let deletedAt: Date?
 
     init?(document: DocumentSnapshot) {
-        let data = document.data() ?? [:]
+        let data = document.data()
+        guard
+            let firstName = data?["firstName"] as? String,
+            let lastName = data?["lastName"] as? String,
+            let email = data?["email"] as? String,
+            let role = data?["role"] as? String,
+            let age = data?["age"] as? Int,
+            let isActive = data?["isActive"] as? Bool
+        else { return nil }
 
         self.id = document.documentID
-        self.firstName = data["firstName"] as? String ?? "Unknown"
-        self.lastName = data["lastName"] as? String ?? ""
-        self.email = data["email"] as? String ?? ""
-        self.role = data["role"] as? String ?? "user"
-        self.age = data["age"] as? Int ?? 0
-        self.isActive = data["isActive"] as? Bool ?? false
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.role = role
+        self.age = age
+        self.isActive = isActive
+
+        self.isDeleted = data?["isDeleted"] as? Bool ?? false
+        self.deletedAt = (data?["deletedAt"] as? Timestamp)?.dateValue()
     }
 }
 

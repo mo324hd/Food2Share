@@ -15,6 +15,7 @@ import FirebaseFirestore
 class UserTableViewController: UITableViewController {
     
     private var listener: ListenerRegistration?
+    private var showDeletedUsers = false
     
     private func showUserDetails(user: AppUser) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -31,9 +32,21 @@ class UserTableViewController: UITableViewController {
 
        override func viewDidLoad() {
            super.viewDidLoad()
+           navigationItem.rightBarButtonItem = UIBarButtonItem(
+                   title: "Deleted",
+                   style: .plain,
+                   target: self,
+                   action: #selector(toggleDeletedUsers)
+               )
            listenForUsers()
            fetchUsers()
        }
+    
+    
+    @objc private func toggleDeletedUsers() {
+        showDeletedUsers.toggle()
+        fetchUsers()
+    }
     
     private func listenForUsers() {
         listener = db.collection("Users(Admin)")
@@ -58,31 +71,31 @@ class UserTableViewController: UITableViewController {
             listener?.remove()  // 👈 STEP 4
         }
 
-       private func fetchUsers() {
-           db.collection("Users(Admin)")
-               .getDocuments { [weak self] snapshot, error in
+    private func fetchUsers() {
+        db.collection("Users(Admin)")
+            .order(by: "createdAt", descending: true)
+            .getDocuments { [weak self] snapshot, error in
+                if let error = error {
+                    print("❌ Error:", error)
+                    return
+                }
 
-                   if let error = error {
-                       print("❌ Error fetching users:", error)
-                       return
-                   }
-                   
-                  
+                guard let self = self else { return }
 
-                   guard let documents = snapshot?.documents else { return }
-                   
-                   
+                let allUsers = snapshot?.documents.compactMap {
+                    AppUser(document: $0)
+                } ?? []
 
-                   self?.users = documents.compactMap {
-                       AppUser(document: $0)
-                   }
+              
+                self.users = allUsers.filter {
+                    $0.isDeleted == self.showDeletedUsers
+                }
 
-                   DispatchQueue.main.async {
-                       self?.tableView.reloadData()
-                   }
-               }
-       }
-    
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+    }
     
  
 
