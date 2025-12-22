@@ -19,11 +19,13 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var roleButton: UIButton!
     @IBOutlet weak var deleteUserButton: UIButton!
+    @IBOutlet weak var restoreUserButton: UIButton!
     
     var user: AppUser!
     private let db = Firestore.firestore()
     
     override func viewDidLoad() {
+            configureRestoreButton()
             super.viewDidLoad()
             populateUI()
         }
@@ -174,6 +176,45 @@ class UserDetailsViewController: UIViewController {
 
                 self.navigationController?.popViewController(animated: true)
             }
+    }
+    
+    @IBAction func restoreUserTapped(_ sender: UIButton) {
+        guard let user = user else { return }
+
+        let alert = UIAlertController(
+            title: "Restore User",
+            message: "This will reactivate the user account.",
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        alert.addAction(UIAlertAction(title: "Restore", style: .default) { _ in
+            self.restoreUser(user)
+        })
+
+        present(alert, animated: true)
+    }
+    
+    private func restoreUser(_ user: AppUser) {
+        db.collection("Users(Admin)")
+            .document(user.id)
+            .updateData([
+                "isDeleted": false,
+                "deletedAt": FieldValue.delete(),
+                "isActive": true
+            ]) { error in
+                if let error = error {
+                    print("❌ Restore failed:", error)
+                    return
+                }
+
+                self.navigationController?.popViewController(animated: true)
+            }
+    }
+    
+    private func configureRestoreButton() {
+        restoreUserButton.isHidden = !(user?.isDeleted ?? false)
     }
     
     /*

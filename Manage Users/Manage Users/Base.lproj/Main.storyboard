@@ -127,14 +127,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7j8-s6-29x">
-                                <rect key="frame" x="134" y="100.66666666666667" width="125" height="26.333333333333329"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="User Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7j8-s6-29x">
+                                <rect key="frame" x="134" y="100.66666666666669" width="125" height="26.333333333333329"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="NNb-eA-fYd">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" alignment="top" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="NNb-eA-fYd">
                                 <rect key="frame" x="39" y="177.66666666666663" width="171" height="216.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="38" translatesAutoresizingMaskIntoConstraints="NO" id="e6g-md-Irg">
@@ -219,16 +218,16 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-dS-OgB">
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ZOm-dS-OgB">
                                 <rect key="frame" x="142" y="443" width="108" height="67.333333333333314"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Active Switch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIC-PW-Hxz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Active Switch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIC-PW-Hxz">
                                         <rect key="frame" x="0.0" y="0.0" width="108" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-al-Kfj">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-al-Kfj">
                                         <rect key="frame" x="29.666666666666657" y="36.333333333333314" width="51" height="31"/>
                                         <connections>
                                             <action selector="activeSwitchChanged:" destination="hM8-Dt-c0n" eventType="valueChanged" id="q4P-pT-gN4"/>
@@ -239,55 +238,74 @@
                                     <constraint firstItem="3Ve-al-Kfj" firstAttribute="top" secondItem="oIC-PW-Hxz" secondAttribute="bottom" constant="15.999999999999982" id="6cL-Zc-x0b"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jx4-pz-dny">
-                                <rect key="frame" x="127" y="580" width="139" height="60"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Change Role">
-                                    <backgroundConfiguration key="background" cornerRadius="10">
-                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
-                                    </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="changeRoleTapped:" destination="hM8-Dt-c0n" eventType="touchUpInside" id="baO-AF-CBE"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqy-Cg-P7T">
-                                <rect key="frame" x="127" y="686" width="139" height="57"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" title="Delete User">
-                                    <backgroundConfiguration key="background" cornerRadius="10">
-                                        <color key="backgroundColor" red="1" green="0.73639486450000002" blue="0.7023584974" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
-                                    <color key="baseForegroundColor" systemColor="systemRedColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="changeRoleTapped:" destination="hM8-Dt-c0n" eventType="touchUpInside" id="wMF-0F-0dc"/>
-                                    <action selector="deleteUserTapped:" destination="hM8-Dt-c0n" eventType="touchUpInside" id="eu4-Ze-UgJ"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="Hp7-r1-rZe">
+                                <rect key="frame" x="127" y="539" width="133" height="197"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jx4-pz-dny">
+                                        <rect key="frame" x="0.0" y="0.0" width="133" height="35.666666666666664"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Change Role">
+                                            <backgroundConfiguration key="background" cornerRadius="10">
+                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="changeRoleTapped:" destination="hM8-Dt-c0n" eventType="touchUpInside" id="XVG-ZP-kb6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRn-y5-obU">
+                                        <rect key="frame" x="0.0" y="80.666666666666629" width="133" height="35.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Restore User">
+                                            <backgroundConfiguration key="background" cornerRadius="10">
+                                                <color key="backgroundColor" red="0.08761688856925795" green="0.79045183634020622" blue="0.45762831265061349" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
+                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="restoreUserTapped:" destination="hM8-Dt-c0n" eventType="touchUpInside" id="hx0-De-D9g"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqy-Cg-P7T">
+                                        <rect key="frame" x="0.0" y="161.33333333333337" width="133" height="35.666666666666657"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="tinted" title="Delete User">
+                                            <backgroundConfiguration key="background" cornerRadius="10">
+                                                <color key="backgroundColor" red="1" green="0.73639486450000002" blue="0.7023584974" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="18"/>
+                                            <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="deleteUserTapped:" destination="hM8-Dt-c0n" eventType="touchUpInside" id="eu4-Ze-UgJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qPG-Eg-YCW"/>
                         <color key="backgroundColor" red="1" green="0.90794747944600995" blue="0.93067671718858247" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="bottom" secondItem="vqy-Cg-P7T" secondAttribute="bottom" constant="81" id="1ph-Ax-Orn"/>
-                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="bottom" secondItem="vqy-Cg-P7T" secondAttribute="bottom" constant="41" id="575-Vy-e1h"/>
-                            <constraint firstItem="ZOm-dS-OgB" firstAttribute="top" secondItem="NNb-eA-fYd" secondAttribute="bottom" constant="28" id="6aL-UF-MJw"/>
-                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="bottom" secondItem="Jx4-pz-dny" secondAttribute="bottom" constant="144" id="9rP-Ts-0mI"/>
-                            <constraint firstItem="ZOm-dS-OgB" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="142" id="HPJ-Fb-wxp"/>
-                            <constraint firstItem="ZOm-dS-OgB" firstAttribute="top" secondItem="NNb-eA-fYd" secondAttribute="bottom" constant="28" id="JVJ-DP-Cgs"/>
-                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="trailing" secondItem="vqy-Cg-P7T" secondAttribute="trailing" constant="127" id="NvE-rp-aym"/>
-                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="bottom" secondItem="ZOm-dS-OgB" secondAttribute="bottom" constant="294.67000000000002" id="Qvu-KL-9ft"/>
-                            <constraint firstItem="Jx4-pz-dny" firstAttribute="top" secondItem="ZOm-dS-OgB" secondAttribute="bottom" constant="90.670000000000002" id="VMY-Bk-NvH"/>
-                            <constraint firstItem="Jx4-pz-dny" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="127" id="YLF-EZ-Yef"/>
-                            <constraint firstItem="vqy-Cg-P7T" firstAttribute="top" secondItem="Jx4-pz-dny" secondAttribute="bottom" constant="46" id="aMv-SA-5Hq"/>
-                            <constraint firstItem="NNb-eA-fYd" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="39" id="jA7-ON-gZU"/>
-                            <constraint firstItem="vqy-Cg-P7T" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="127" id="nqX-Bl-WFm"/>
-                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="trailing" secondItem="Jx4-pz-dny" secondAttribute="trailing" constant="127" id="sId-w8-sj2"/>
-                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="trailing" secondItem="ZOm-dS-OgB" secondAttribute="trailing" constant="143" id="wCa-Gg-DHf"/>
-                            <constraint firstItem="vqy-Cg-P7T" firstAttribute="top" secondItem="Jx4-pz-dny" secondAttribute="bottom" constant="46" id="wtK-er-Hgi"/>
+                            <constraint firstItem="7j8-s6-29x" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="134" id="5PA-ZV-o4l"/>
+                            <constraint firstItem="ZOm-dS-OgB" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="142" id="5UT-Hc-K6X"/>
+                            <constraint firstItem="ZOm-dS-OgB" firstAttribute="top" secondItem="NNb-eA-fYd" secondAttribute="bottom" constant="49" id="Em4-Ws-6JH"/>
+                            <constraint firstItem="NNb-eA-fYd" firstAttribute="top" secondItem="7j8-s6-29x" secondAttribute="bottom" constant="50.670000000000002" id="HWV-F5-7gY"/>
+                            <constraint firstItem="ZOm-dS-OgB" firstAttribute="top" secondItem="NNb-eA-fYd" secondAttribute="bottom" constant="49" id="MP6-K8-dlI"/>
+                            <constraint firstItem="7j8-s6-29x" firstAttribute="top" secondItem="m17-kU-haF" secondAttribute="top" constant="100.67" id="MZE-Ba-J3f"/>
+                            <constraint firstItem="ZOm-dS-OgB" firstAttribute="top" secondItem="NNb-eA-fYd" secondAttribute="bottom" constant="49" id="Q7k-k4-Q3E"/>
+                            <constraint firstItem="NNb-eA-fYd" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="39" id="ThC-wM-4ew"/>
+                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="trailing" secondItem="7j8-s6-29x" secondAttribute="trailing" constant="134" id="ToK-gv-3Oj"/>
+                            <constraint firstItem="Hp7-r1-rZe" firstAttribute="top" secondItem="ZOm-dS-OgB" secondAttribute="bottom" constant="28.670000000000002" id="bjx-ac-k4V"/>
+                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="bottom" secondItem="Hp7-r1-rZe" secondAttribute="bottom" constant="48" id="gag-Ru-tzw"/>
+                            <constraint firstItem="NNb-eA-fYd" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="39" id="giU-fW-5Iy"/>
+                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="trailing" secondItem="Hp7-r1-rZe" secondAttribute="trailing" constant="133" id="i5O-xP-pND"/>
+                            <constraint firstItem="Hp7-r1-rZe" firstAttribute="top" secondItem="ZOm-dS-OgB" secondAttribute="bottom" constant="28.670000000000002" id="nLg-Me-Iqk"/>
+                            <constraint firstItem="Hp7-r1-rZe" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="127" id="okC-ya-TVU"/>
+                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="trailing" secondItem="ZOm-dS-OgB" secondAttribute="trailing" constant="143" id="tMI-zu-ANo"/>
+                            <constraint firstItem="NNb-eA-fYd" firstAttribute="top" secondItem="7j8-s6-29x" secondAttribute="bottom" constant="50.670000000000002" id="xRC-Ul-Q7d"/>
                         </constraints>
                     </view>
                     <connections>
@@ -296,6 +314,7 @@
                         <outlet property="deleteUserButton" destination="vqy-Cg-P7T" id="9x6-qR-lx7"/>
                         <outlet property="emailLabel" destination="5bu-Sx-M5A" id="VnN-J5-qFo"/>
                         <outlet property="nameLabel" destination="YNs-a5-ZCm" id="Wrg-os-yCy"/>
+                        <outlet property="restoreUserButton" destination="RRn-y5-obU" id="rZI-Yg-tQk"/>
                         <outlet property="roleButton" destination="Jx4-pz-dny" id="rI9-k4-nHc"/>
                         <outlet property="roleLabel" destination="EK2-ZP-gTH" id="Bea-ri-MDb"/>
                     </connections>
