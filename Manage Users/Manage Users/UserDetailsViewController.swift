@@ -11,7 +11,7 @@ import FirebaseAuth
 
 class UserDetailsViewController: UIViewController {
     
-    
+    @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
@@ -31,6 +31,7 @@ class UserDetailsViewController: UIViewController {
         }
     
     private func populateUI() {
+           idLabel.text = user.id
            nameLabel.text = user.fullName
            emailLabel.text = user.email
            ageLabel.text = String(user.age)

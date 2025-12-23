@@ -63,7 +63,6 @@ class UserTableViewController: UITableViewController {
            ]
            
            listenForUsers()
-           fetchUsers()
        }
     
     @objc private func showStatusFilter() {
@@ -135,22 +134,21 @@ class UserTableViewController: UITableViewController {
     private func listenForUsers() {
         listener = db.collection("Users(Admin)")
             .addSnapshotListener { [weak self] snapshot, error in
-
                 if let error = error {
                     print("❌ Listener error:", error)
                     return
                 }
 
-                self?.users = snapshot?.documents.compactMap {
+                guard let self = self else { return }
+
+                self.allUsers = snapshot?.documents.compactMap {
                     AppUser(document: $0)
                 } ?? []
 
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
+                // ✅ ALWAYS apply filters
+                self.applyFilters()
             }
     }
-    
     deinit {
             listener?.remove()  // 👈 STEP 4
         }
