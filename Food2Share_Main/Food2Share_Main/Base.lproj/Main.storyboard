@@ -154,55 +154,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Egv-gP-qJg">
+                            <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDS-5q-62w">
                                 <rect key="frame" x="0.0" y="118" width="393" height="617"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="y8o-87-nAL">
+                                <rect key="frame" x="0.0" y="117" width="393" height="617"/>
                                 <subviews>
-                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7a-w6-MGf">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0pu-Vy-YPQ">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="70"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Food Items List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQO-BU-2J3">
-                                                <rect key="frame" x="124" y="23" width="144" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food Item List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPY-Qg-yv8">
+                                                <rect key="frame" x="130" y="23" width="133" height="24"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yij-hl-hNP">
-                                        <rect key="frame" x="0.0" y="70" width="393" height="547"/>
-                                        <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nXC-SP-z21">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="547"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            </tableView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="nXC-SP-z21" secondAttribute="bottom" id="4kH-om-4t6"/>
-                                            <constraint firstItem="nXC-SP-z21" firstAttribute="top" secondItem="yij-hl-hNP" secondAttribute="top" id="6iU-kT-9Ss"/>
-                                            <constraint firstItem="nXC-SP-z21" firstAttribute="leading" secondItem="yij-hl-hNP" secondAttribute="leading" id="ZS7-6J-r61"/>
-                                            <constraint firstAttribute="trailing" secondItem="nXC-SP-z21" secondAttribute="trailing" id="pXe-Wb-On8"/>
+                                            <constraint firstAttribute="width" constant="393" id="CXZ-mf-Fre"/>
+                                            <constraint firstAttribute="height" constant="70" id="F0B-P6-l03"/>
+                                            <constraint firstItem="vPY-Qg-yv8" firstAttribute="centerY" secondItem="0pu-Vy-YPQ" secondAttribute="centerY" id="P88-i4-WSR"/>
+                                            <constraint firstItem="vPY-Qg-yv8" firstAttribute="centerX" secondItem="0pu-Vy-YPQ" secondAttribute="centerX" id="SlN-LS-PaA"/>
+                                            <constraint firstItem="vPY-Qg-yv8" firstAttribute="top" secondItem="0pu-Vy-YPQ" secondAttribute="top" constant="23" id="nsW-on-BEF"/>
+                                            <constraint firstItem="vPY-Qg-yv8" firstAttribute="leading" secondItem="0pu-Vy-YPQ" secondAttribute="leading" constant="130" id="zEn-zL-RNH"/>
                                         </constraints>
                                     </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QOR-OA-oiC">
+                                        <rect key="frame" x="0.0" y="70" width="393" height="547"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FoodItemCell" id="wJV-wf-UTc">
+                                                <rect key="frame" x="0.0" y="50" width="393" height="47.666667938232422"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wJV-wf-UTc" id="Uf1-aX-Y8i">
+                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="47.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VwA-ug-jEK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="VwA-ug-jEK" firstAttribute="bottom" secondItem="Egv-gP-qJg" secondAttribute="bottom" id="7X6-Rv-3iM"/>
-                            <constraint firstItem="Egv-gP-qJg" firstAttribute="top" secondItem="VwA-ug-jEK" secondAttribute="top" id="OH2-81-nrm"/>
-                            <constraint firstItem="Egv-gP-qJg" firstAttribute="leading" secondItem="VwA-ug-jEK" secondAttribute="leading" id="bJL-1Z-rnL"/>
-                            <constraint firstItem="VwA-ug-jEK" firstAttribute="trailing" secondItem="Egv-gP-qJg" secondAttribute="trailing" id="hzN-b1-Tgb"/>
+                            <constraint firstItem="VwA-ug-jEK" firstAttribute="trailing" secondItem="SDS-5q-62w" secondAttribute="trailing" id="59M-C9-aPQ"/>
+                            <constraint firstItem="SDS-5q-62w" firstAttribute="top" secondItem="VwA-ug-jEK" secondAttribute="top" id="XLj-Mo-7fB"/>
+                            <constraint firstItem="VwA-ug-jEK" firstAttribute="bottom" secondItem="SDS-5q-62w" secondAttribute="bottom" id="gJx-n2-nTq"/>
+                            <constraint firstItem="SDS-5q-62w" firstAttribute="leading" secondItem="VwA-ug-jEK" secondAttribute="leading" id="pgN-QR-Sb3"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Food List" image="list.clipboard" catalog="system" id="jHm-4P-7CH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WvE-Dn-qTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1503" y="-264"/>
+            <point key="canvasLocation" x="1501.5267175572519" y="-264.08450704225356"/>
         </scene>
         <!--FoodItemInfo-->
         <scene sceneID="zIb-JA-yks">
@@ -212,14 +220,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="XAv-gD-IWl">
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Kn-rm-iae">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="COx-YG-oRE">
                                 <rect key="frame" x="0.0" y="118" width="393" height="666"/>
                                 <subviews>
-                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pyi-WN-Apv">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oV9-I0-LrM">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="70"/>
-                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                        <subviews>
+                                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3GV-vI-ShY">
+                                                <rect key="frame" x="0.0" y="13" width="393" height="44"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <items>
+                                                    <navigationItem title="Food item..." id="UFm-0g-WZy"/>
+                                                </items>
+                                            </navigationBar>
+                                        </subviews>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yhy-Sa-302">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLt-ba-0Qx">
                                         <rect key="frame" x="0.0" y="70" width="393" height="596"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
@@ -229,10 +249,14 @@
                         <viewLayoutGuide key="safeArea" id="KXL-T6-BHB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XAv-gD-IWl" firstAttribute="top" secondItem="KXL-T6-BHB" secondAttribute="top" id="6c2-5H-WYG"/>
-                            <constraint firstItem="KXL-T6-BHB" firstAttribute="bottom" secondItem="XAv-gD-IWl" secondAttribute="bottom" id="Nhn-oV-ePV"/>
-                            <constraint firstItem="KXL-T6-BHB" firstAttribute="trailing" secondItem="XAv-gD-IWl" secondAttribute="trailing" id="b6e-l5-4t6"/>
-                            <constraint firstItem="XAv-gD-IWl" firstAttribute="leading" secondItem="KXL-T6-BHB" secondAttribute="leading" id="tF5-w3-vUr"/>
+                            <constraint firstItem="KXL-T6-BHB" firstAttribute="bottom" secondItem="3Kn-rm-iae" secondAttribute="bottom" id="1sW-70-W2v"/>
+                            <constraint firstItem="3Kn-rm-iae" firstAttribute="leading" secondItem="KXL-T6-BHB" secondAttribute="leading" id="LGA-l8-8dn"/>
+                            <constraint firstItem="3Kn-rm-iae" firstAttribute="top" secondItem="KXL-T6-BHB" secondAttribute="top" id="QAk-01-oE7"/>
+                            <constraint firstItem="KXL-T6-BHB" firstAttribute="bottom" secondItem="COx-YG-oRE" secondAttribute="bottom" id="bHL-li-ENF"/>
+                            <constraint firstItem="KXL-T6-BHB" firstAttribute="trailing" secondItem="3Kn-rm-iae" secondAttribute="trailing" id="exc-HT-vaT"/>
+                            <constraint firstItem="COx-YG-oRE" firstAttribute="leading" secondItem="KXL-T6-BHB" secondAttribute="leading" id="jIo-X2-R64"/>
+                            <constraint firstItem="COx-YG-oRE" firstAttribute="top" secondItem="KXL-T6-BHB" secondAttribute="top" id="pVk-Pv-0fj"/>
+                            <constraint firstItem="KXL-T6-BHB" firstAttribute="trailing" secondItem="COx-YG-oRE" secondAttribute="trailing" id="yWD-W4-MKn"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -246,6 +270,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="AzG-ha-Aeb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TFL-AK-wMb">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
