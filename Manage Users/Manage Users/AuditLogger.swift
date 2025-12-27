@@ -24,7 +24,7 @@ struct AuditLogger {
 
         let logData: [String: Any] = [
             "timestamp": Timestamp(),
-            "type": "user",
+            "type": "admin",
             "action": action,
             "userId": userId,
             "userRole": "admin",

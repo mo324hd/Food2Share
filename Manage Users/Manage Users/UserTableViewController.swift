@@ -14,6 +14,7 @@ import FirebaseFirestore
 
 class UserTableViewController: UITableViewController {
     
+    
     private var listener: ListenerRegistration?
     private var showDeletedUsers = false
     private var allUsers: [AppUser] = []   // source of truth
@@ -230,11 +231,28 @@ class UserTableViewController: UITableViewController {
         return filteredUsers.count
     }
 
+    @objc private func viewButtonTapped(_ sender: UIButton) {
+        let user = filteredUsers[sender.tag]
+        print("✅ View tapped for:", user.id)
+        showUserDetails(user: user)
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! CustomTableViewCell
 
         let user = filteredUsers[indexPath.row]
+        
+        let button = UIButton(type: .system)
+        button.setTitle("View", for: .normal)
+        button.backgroundColor = .systemPink
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 6
+        button.frame = CGRect(x: 0, y: 0, width: 56, height: 30)
+
+        button.addTarget(self, action: #selector(viewButtonTapped(_:)), for: .touchUpInside)
+        button.tag = indexPath.row
+
+        cell.accessoryView = button
         
         
         
@@ -250,6 +268,7 @@ class UserTableViewController: UITableViewController {
 
         return cell
     }
+    
     
 
     /*
