@@ -55,39 +55,55 @@ class UserDetailsViewController: UIViewController {
             }
        }
     
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+    
     @IBAction func activeSwitchChanged(_ sender: UISwitch) {
-            guard let user = user else { return }
-        
-            let currentUserId = Auth.auth().currentUser?.uid
+        guard let user = user else { return }
 
-         
-          if user.role.lowercased() == "admin" && user.id == currentUserId {
-              sender.isOn = true // rollback
-              showAlert(
-                  title: "Action Not Allowed",
-                  message: "You cannot deactivate your own admin account."
-              )
-              return
-          }
-        func showAlert(title: String, message: String) {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            present(alert, animated: true)
+        let currentUserId = Auth.auth().currentUser?.uid
+
+        // 🔒 Prevent admin from deactivating themselves
+        if user.role.lowercased() == "admin" && user.id == currentUserId {
+            sender.isOn = true // rollback
+            showAlert(
+                title: "Action Not Allowed",
+                message: "You cannot deactivate your own admin account."
+            )
+            return
         }
 
-            db.collection("Users(Admin)")
-                .document(user.id)
-                .updateData([
-                    "isActive": sender.isOn
-                ]) { error in
-                    if let error = error {
-                        print("❌ Failed to update isActive:", error)
-                        sender.isOn.toggle() // rollback UI
-                    } else {
-                        print("✅ User active status updated")
-                    }
+        db.collection("Users(Admin)")
+            .document(user.id)
+            .updateData([
+                "isActive": sender.isOn
+            ]) { error in
+                if let error = error {
+                    print("❌ Failed to update isActive:", error)
+                    sender.isOn.toggle() // rollback UI
+                } else {
+                    print("✅ User active status updated")
+
+                    // 🧾 LOG ACTION (ADD THIS 👇)
+                    let status = sender.isOn ? "activated" : "deactivated"
+
+                    AuditLogger.log(
+                        action: "USER_STATUS_CHANGED",
+                        message: "Admin \(status) user \(user.id)",
+                        targetUserId: user.id
+                    )
                 }
-        }
+            }
+    }
+
     
     @IBAction func changeRoleTapped(_ sender: UIButton) {
         guard user != nil else { return }
@@ -135,6 +151,12 @@ class UserDetailsViewController: UIViewController {
                     print("✅ Role updated")
                 }
             }
+        
+        AuditLogger.log(
+                        action: "ROLE_CHANGED",
+                        message: "Admin changed role of \(user.id) to \(newRole)",
+                        targetUserId: user.id
+                    )
     }
     
     private func configureDeleteButton() {
@@ -174,6 +196,12 @@ class UserDetailsViewController: UIViewController {
                     print("❌ Delete failed:", error)
                     return
                 }
+                
+                AuditLogger.log(
+                                action: "USER_DELETED",
+                                message: "Admin deleted user \(user.id)",
+                                targetUserId: user.id
+                            )
 
                 self.navigationController?.popViewController(animated: true)
             }
@@ -209,6 +237,12 @@ class UserDetailsViewController: UIViewController {
                     print("❌ Restore failed:", error)
                     return
                 }
+                
+                AuditLogger.log(
+                               action: "USER_RESTORED",
+                               message: "Admin restored user \(user.id)",
+                               targetUserId: user.id
+                           )
 
                 self.navigationController?.popViewController(animated: true)
             }
