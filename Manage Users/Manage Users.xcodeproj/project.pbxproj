@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4E6CCF822EFFE05400DC15F9 /* appLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CCF802EFFE05400DC15F9 /* appLogs.swift */; };
 		4E6CCF832EFFE05400DC15F9 /* LogsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CCF812EFFE05400DC15F9 /* LogsTableTableViewController.swift */; };
-		4E6CCF862EFFE07B00DC15F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E6CCF842EFFE07B00DC15F9 /* Main.storyboard */; };
 		7A4CDEB72EF683E500AF2B68 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7A4CDEB62EF683E500AF2B68 /* FirebaseAnalytics */; };
 		7A4CDEB92EF683E500AF2B68 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7A4CDEB82EF683E500AF2B68 /* FirebaseAnalyticsCore */; };
 		7A4CDEBB2EF683E500AF2B68 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7A4CDEBA2EF683E500AF2B68 /* FirebaseAuth */; };
@@ -169,7 +168,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E6CCF862EFFE07B00DC15F9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

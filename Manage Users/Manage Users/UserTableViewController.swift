@@ -52,13 +52,13 @@ class UserTableViewController: UITableViewController {
                    target: self,
                    action: #selector(toggleDeletedUsers)
                )
-           navigationItem.leftBarButtonItem = UIBarButtonItem(
+           navigationItem.rightBarButtonItem = UIBarButtonItem(
                title: "Role",
                style: .plain,
                target: self,
                action: #selector(showRoleFilter)
            )
-           navigationItem.leftBarButtonItems = [
+           navigationItem.rightBarButtonItems = [
                UIBarButtonItem(title: "Role", style: .plain, target: self, action: #selector(showRoleFilter)),
                UIBarButtonItem(title: "Status", style: .plain, target: self, action: #selector(showStatusFilter))
            ]

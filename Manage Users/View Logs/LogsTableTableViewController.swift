@@ -56,7 +56,7 @@ class LogsTableViewController: UITableViewController, UISearchResultsUpdating {
                 action: #selector(showActionFilter)
             )
         ]
-        navigationItem.leftBarButtonItems = [
+        navigationItem.rightBarButtonItems = [
         UIBarButtonItem(
               title: "Start Date",
               style: .plain,
