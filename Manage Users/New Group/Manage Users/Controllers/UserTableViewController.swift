@@ -24,6 +24,16 @@ class UserTableViewController: UITableViewController {
 
     private let searchController = UISearchController(searchResultsController: nil)
     
+    enum UserStatusFilter {
+        case all
+        case active
+        case inactive
+        case deleted
+    }
+
+    private var statusFilter: UserStatusFilter = .active
+
+    
     
     private func showUserDetails(user: AppUser) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -46,12 +56,7 @@ class UserTableViewController: UITableViewController {
 
                navigationItem.searchController = searchController
                navigationItem.hidesSearchBarWhenScrolling = false
-           navigationItem.rightBarButtonItem = UIBarButtonItem(
-                   title: "Deleted",
-                   style: .plain,
-                   target: self,
-                   action: #selector(toggleDeletedUsers)
-               )
+           
            navigationItem.rightBarButtonItem = UIBarButtonItem(
                title: "Role",
                style: .plain,
@@ -74,23 +79,29 @@ class UserTableViewController: UITableViewController {
         )
 
         alert.addAction(UIAlertAction(title: "All", style: .default) { _ in
-            self.showOnlyActive = nil
+            self.statusFilter = .all
             self.applyFilters()
         })
 
         alert.addAction(UIAlertAction(title: "Active", style: .default) { _ in
-            self.showOnlyActive = true
+            self.statusFilter = .active
             self.applyFilters()
         })
 
         alert.addAction(UIAlertAction(title: "Inactive", style: .default) { _ in
-            self.showOnlyActive = false
+            self.statusFilter = .inactive
+            self.applyFilters()
+        })
+
+        alert.addAction(UIAlertAction(title: "Deleted", style: .destructive) { _ in
+            self.statusFilter = .deleted
             self.applyFilters()
         })
 
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(alert, animated: true)
     }
+
     
     @objc private func showRoleFilter() {
         let alert = UIAlertController(
@@ -123,14 +134,7 @@ class UserTableViewController: UITableViewController {
         present(alert, animated: true)
     }
     
-    @objc private func toggleDeletedUsers() {
-        showDeletedUsers.toggle()
-
-        navigationItem.rightBarButtonItem?.title =
-            showDeletedUsers ? "Active" : "Deleted"
-
-        applyFilters()
-    }
+  
     
     private func listenForUsers() {
         listener = db.collection("Users(Admin)")
@@ -175,10 +179,7 @@ class UserTableViewController: UITableViewController {
     private func applyFilters() {
         var results = allUsers
 
-        // 🔹 Deleted / Active filter
-        results = results.filter {
-            $0.isDeleted == showDeletedUsers
-        }
+       
         
         // Role Filter
         if let role = selectedRole {
@@ -187,11 +188,15 @@ class UserTableViewController: UITableViewController {
                }
            }
         
-        // 🔹 Active status filter
-        if let isActive = showOnlyActive {
-            results = results.filter {
-                $0.isActive == isActive
-            }
+        switch statusFilter {
+        case .all:
+            break
+        case .active:
+            results = results.filter { $0.isActive && !$0.isDeleted }
+        case .inactive:
+            results = results.filter { !$0.isActive && !$0.isDeleted }
+        case .deleted:
+            results = results.filter { $0.isDeleted }
         }
 
         // 🔹 Search filter
