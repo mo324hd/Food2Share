@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  Emergency donation
+//  Recurring Donation
 //
-//  Created by Ahmed Qamber on 27/12/2025.
+//  Created by Ahmed Qamber on 30/12/2025.
 //
 
 import UIKit
@@ -13,14 +13,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
-        let emergencyVC = EmergencyDonationViewController()
-        let nav = UINavigationController(rootViewController: emergencyVC)
-        nav.navigationBar.isHidden = true // custom header per design
-        window.rootViewController = nav
-        self.window = window
-        window.makeKeyAndVisible()
+        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
+        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
