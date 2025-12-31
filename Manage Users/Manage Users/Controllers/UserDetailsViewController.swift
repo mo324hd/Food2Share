@@ -130,6 +130,11 @@ class UserDetailsViewController: UIViewController {
                 self.updateRole(to: role)
             })
         }
+        
+        if let popover = alert.popoverPresentationController {
+               popover.sourceView = sender
+               popover.sourceRect = sender.bounds
+           }
 
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 

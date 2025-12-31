@@ -276,7 +276,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qPG-Eg-YCW"/>
-                        <color key="backgroundColor" red="1" green="0.90794747944600995" blue="0.93067671718858247" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="7j8-s6-29x" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="134" id="5PA-ZV-o4l"/>
                             <constraint firstItem="ZOm-dS-OgB" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="142" id="5UT-Hc-K6X"/>
@@ -287,10 +287,12 @@
                             <constraint firstItem="ZOm-dS-OgB" firstAttribute="top" secondItem="NNb-eA-fYd" secondAttribute="bottom" constant="49" id="Q7k-k4-Q3E"/>
                             <constraint firstItem="NNb-eA-fYd" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="39" id="ThC-wM-4ew"/>
                             <constraint firstItem="qPG-Eg-YCW" firstAttribute="trailing" secondItem="7j8-s6-29x" secondAttribute="trailing" constant="134" id="ToK-gv-3Oj"/>
+                            <constraint firstItem="7j8-s6-29x" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="134" id="Y53-WW-gwv"/>
                             <constraint firstItem="Hp7-r1-rZe" firstAttribute="top" secondItem="ZOm-dS-OgB" secondAttribute="bottom" constant="28.670000000000002" id="bjx-ac-k4V"/>
                             <constraint firstItem="qPG-Eg-YCW" firstAttribute="bottom" secondItem="Hp7-r1-rZe" secondAttribute="bottom" constant="48" id="gag-Ru-tzw"/>
                             <constraint firstItem="NNb-eA-fYd" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="39" id="giU-fW-5Iy"/>
                             <constraint firstItem="qPG-Eg-YCW" firstAttribute="trailing" secondItem="Hp7-r1-rZe" secondAttribute="trailing" constant="133" id="i5O-xP-pND"/>
+                            <constraint firstItem="qPG-Eg-YCW" firstAttribute="trailing" secondItem="7j8-s6-29x" secondAttribute="trailing" constant="134" id="i8n-Fa-cOq"/>
                             <constraint firstItem="Hp7-r1-rZe" firstAttribute="top" secondItem="ZOm-dS-OgB" secondAttribute="bottom" constant="28.670000000000002" id="nLg-Me-Iqk"/>
                             <constraint firstItem="Hp7-r1-rZe" firstAttribute="leading" secondItem="qPG-Eg-YCW" secondAttribute="leading" constant="127" id="okC-ya-TVU"/>
                             <constraint firstItem="qPG-Eg-YCW" firstAttribute="trailing" secondItem="ZOm-dS-OgB" secondAttribute="trailing" constant="143" id="tMI-zu-ANo"/>
@@ -321,60 +323,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2h-yv-f4k">
-                                <rect key="frame" x="11" y="227" width="177" height="87"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Manage Users">
-                                    <color key="baseForegroundColor" name="WidgetBackground"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="manageUsersTapped:" destination="jmr-Iy-1s1" eventType="touchUpInside" id="F5n-5f-7Ca"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xi-QT-pep">
-                                <rect key="frame" x="209" y="227" width="177" height="88"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" name="WidgetBackground"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="View Logs">
-                                    <color key="baseForegroundColor" name="AccentColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="viewLogsTapped:" destination="jmr-Iy-1s1" eventType="touchUpInside" id="b4r-aT-RVL"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Admin Panel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dsS-Nq-6Sq">
-                                <rect key="frame" x="84" y="111" width="224" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2R-6b-pJl">
-                                <rect key="frame" x="16" y="369" width="361" height="115"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemMintColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Analytics"/>
-                                <connections>
-                                    <action selector="analyticsTapped:" destination="jmr-Iy-1s1" eventType="touchUpInside" id="9dA-65-imT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGJ-6e-jJs">
-                                <rect key="frame" x="110" y="536" width="172" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.98039215800000001" green="0.94509804249999996" blue="0.6784313917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Simulate Logs"/>
-                                <connections>
-                                    <action selector="simulateLogsTapped:" destination="jmr-Iy-1s1" eventType="touchUpInside" id="mNk-G1-Pm2"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="x5q-02-21z">
+                                <rect key="frame" x="130" y="254.99999999999997" width="133.66666666666663" height="267.33333333333326"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xi-QT-pep">
+                                        <rect key="frame" x="16" y="0.0" width="102" height="38.333333333333336"/>
+                                        <color key="backgroundColor" name="WidgetBackground"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="View Logs">
+                                            <backgroundConfiguration key="background" cornerRadius="10"/>
+                                            <color key="baseForegroundColor" name="AccentColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="viewLogsTapped:" destination="jmr-Iy-1s1" eventType="touchUpInside" id="b4r-aT-RVL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2h-yv-f4k">
+                                        <rect key="frame" x="0.0" y="76.333333333333314" width="133.66666666666666" height="38.333333333333343"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Manage Users">
+                                            <backgroundConfiguration key="background" cornerRadius="20"/>
+                                            <color key="baseForegroundColor" name="WidgetBackground"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="manageUsersTapped:" destination="jmr-Iy-1s1" eventType="touchUpInside" id="F5n-5f-7Ca"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGJ-6e-jJs">
+                                        <rect key="frame" x="1.3333333333333428" y="152.66666666666669" width="131" height="38.333333333333343"/>
+                                        <color key="backgroundColor" red="0.98039215800000001" green="0.94509804249999996" blue="0.6784313917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Simulate Logs">
+                                            <backgroundConfiguration key="background" cornerRadius="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="simulateLogsTapped:" destination="jmr-Iy-1s1" eventType="touchUpInside" id="mNk-G1-Pm2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2R-6b-pJl">
+                                        <rect key="frame" x="20.333333333333336" y="229" width="93.333333333333314" height="38.333333333333314"/>
+                                        <color key="backgroundColor" systemColor="systemMintColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Analytics">
+                                            <backgroundConfiguration key="background" cornerRadius="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="analyticsTapped:" destination="jmr-Iy-1s1" eventType="touchUpInside" id="9dA-65-imT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="H36-t2-T1a"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="H36-t2-T1a" firstAttribute="trailing" secondItem="x5q-02-21z" secondAttribute="trailing" constant="129.33000000000001" id="BsU-Wi-pVJ"/>
+                            <constraint firstItem="x5q-02-21z" firstAttribute="leading" secondItem="H36-t2-T1a" secondAttribute="leading" constant="130" id="UcW-B4-HlW"/>
+                            <constraint firstItem="H36-t2-T1a" firstAttribute="bottom" secondItem="x5q-02-21z" secondAttribute="bottom" constant="261.67000000000002" id="Vv9-ef-QIC"/>
+                            <constraint firstItem="x5q-02-21z" firstAttribute="top" secondItem="H36-t2-T1a" secondAttribute="top" constant="93" id="kWf-lj-Eg5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4hY-Wg-eCm"/>
                     <connections>
@@ -410,13 +418,83 @@
                     <view key="view" contentMode="scaleToFill" id="qaU-zb-8op">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="yel-gE-REp">
+                                <rect key="frame" x="76" y="214" width="240.66666666666663" height="331.33333333333326"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pMn-07-Ly5">
+                                        <rect key="frame" x="0.0" y="0.0" width="240.66666666666666" height="45.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Food Item Listed">
+                                            <backgroundConfiguration key="background" cornerRadius="10">
+                                                <color key="backgroundColor" red="0.87996419401204373" green="0.99539278093628369" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="26"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="foodItemListedTapped:" destination="Hus-DT-3Ro" eventType="touchUpInside" id="Had-PL-nlz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKd-n9-viY">
+                                        <rect key="frame" x="0.0" y="95.333333333333343" width="240.66666666666666" height="45.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Donation Created">
+                                            <backgroundConfiguration key="background" cornerRadius="10">
+                                                <color key="backgroundColor" red="0.87996419400000003" green="0.99539278090000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="26"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="donationCreatedTapped:" destination="Hus-DT-3Ro" eventType="touchUpInside" id="hBX-77-vBv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQI-kz-wVQ">
+                                        <rect key="frame" x="0.0" y="190.66666666666669" width="240.66666666666666" height="45.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Donation Accepted">
+                                            <backgroundConfiguration key="background" cornerRadius="10">
+                                                <color key="backgroundColor" red="0.87996419400000003" green="0.99539278090000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="26"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="donationAcceptedTapped:" destination="Hus-DT-3Ro" eventType="touchUpInside" id="Hvi-GK-2AG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyq-mO-XMu">
+                                        <rect key="frame" x="0.0" y="286" width="240.66666666666666" height="45.333333333333314"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Donation Complete">
+                                            <backgroundConfiguration key="background" cornerRadius="10">
+                                                <color key="backgroundColor" red="0.87996419400000003" green="0.99539278090000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="26"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="donationCompletedTapped:" destination="Hus-DT-3Ro" eventType="touchUpInside" id="zge-4F-dnG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="nCw-eS-XgU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nCw-eS-XgU" firstAttribute="trailing" secondItem="yel-gE-REp" secondAttribute="trailing" constant="76.329999999999998" id="SsD-4Y-wVd"/>
+                            <constraint firstItem="yel-gE-REp" firstAttribute="leading" secondItem="nCw-eS-XgU" secondAttribute="leading" constant="76" id="mnI-NZ-gMP"/>
+                            <constraint firstItem="nCw-eS-XgU" firstAttribute="bottom" secondItem="yel-gE-REp" secondAttribute="bottom" constant="334.67000000000002" id="tU6-ln-Fd2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnDonationAccepted" destination="QQI-kz-wVQ" id="NIn-nW-zfg"/>
+                        <outlet property="btnDonationComplete" destination="Hyq-mO-XMu" id="cdP-Ym-AhK"/>
+                        <outlet property="btnDonationCreated" destination="PKd-n9-viY" id="PCL-98-HYH"/>
+                        <outlet property="btnFoodItemListed" destination="pMn-07-Ly5" id="yUd-Nr-cig"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="21n-bF-ehG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984" y="799"/>
+            <point key="canvasLocation" x="983.96946564885491" y="798.59154929577471"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WfZ-fg-XXa">

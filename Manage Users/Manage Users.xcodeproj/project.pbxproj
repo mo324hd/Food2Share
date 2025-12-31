@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4E6CCF822EFFE05400DC15F9 /* appLogs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CCF802EFFE05400DC15F9 /* appLogs.swift */; };
-		4E6CCF832EFFE05400DC15F9 /* LogsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6CCF812EFFE05400DC15F9 /* LogsTableTableViewController.swift */; };
 		7A4CDEB72EF683E500AF2B68 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7A4CDEB62EF683E500AF2B68 /* FirebaseAnalytics */; };
 		7A4CDEB92EF683E500AF2B68 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 7A4CDEB82EF683E500AF2B68 /* FirebaseAnalyticsCore */; };
 		7A4CDEBB2EF683E500AF2B68 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7A4CDEBA2EF683E500AF2B68 /* FirebaseAuth */; };
@@ -21,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		4E6CCF802EFFE05400DC15F9 /* appLogs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appLogs.swift; sourceTree = "<group>"; };
-		4E6CCF812EFFE05400DC15F9 /* LogsTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogsTableTableViewController.swift; sourceTree = "<group>"; };
 		4E6CCF852EFFE07B00DC15F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D3230EBF2EEE7F8A00B9FE73 /* Manage Users.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Manage Users.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -71,7 +69,6 @@
 			children = (
 				4E6CCF842EFFE07B00DC15F9 /* Main.storyboard */,
 				4E6CCF802EFFE05400DC15F9 /* appLogs.swift */,
-				4E6CCF812EFFE05400DC15F9 /* LogsTableTableViewController.swift */,
 			);
 			path = "View Logs";
 			sourceTree = "<group>";
@@ -179,7 +176,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E6CCF822EFFE05400DC15F9 /* appLogs.swift in Sources */,
-				4E6CCF832EFFE05400DC15F9 /* LogsTableTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

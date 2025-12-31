@@ -39,6 +39,17 @@ class LogsTableViewController: UITableViewController, UISearchResultsUpdating {
             return .systemBlue
         case "LOGOUT":
             return .systemPurple
+        case "DONATION_COMPLETED":
+                return .systemPurple
+
+            case "DONATION_ACCEPTED":
+                return .systemGreen
+
+            case "DONATION_CREATED":
+                return .systemBlue
+
+            case "FOOD_ITEM_LISTED":
+                return .systemOrange
         default:
             // System logs or unknown actions
             return log.type == "system" ? .secondaryLabel : .label
@@ -248,12 +259,12 @@ class LogsTableViewController: UITableViewController, UISearchResultsUpdating {
 
         let log = filteredLogs[indexPath.row]
 
-        // 🔹 Title (action)
+ 
         cell.textLabel?.text = log.action
         cell.textLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         cell.textLabel?.textColor = colorForLog(log)
 
-        // 🔹 Subtitle (source • user • time)
+
         let source = log.type.uppercased()
         let user = log.userId ?? "SYSTEM"
         let time = timeAgo(from: log.timestamp)
@@ -261,9 +272,15 @@ class LogsTableViewController: UITableViewController, UISearchResultsUpdating {
         cell.detailTextLabel?.text = "\(source) • \(user) • \(time)"
         cell.detailTextLabel?.textColor = .secondaryLabel
 
-        // 🔹 LEFT INDICATOR DOT (ADD THIS HERE 👇)
+     
         cell.imageView?.image = UIImage(systemName: "circle.fill")
         cell.imageView?.tintColor = colorForLog(log)
+        
+        if log.type == "system" {
+            cell.detailTextLabel?.textColor = .secondaryLabel
+            cell.textLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+        }
+
 
         return cell
     }

@@ -33,9 +33,9 @@ struct AuditLogger {
 
         db.collection("Logs").addDocument(data: logData) { error in
             if let error = error {
-                print("❌ Log write failed:", error)
+                print("Log write failed:", error)
             } else {
-                print("✅ Log written successfully")
+                print("Log written successfully")
             }
         }
     }
