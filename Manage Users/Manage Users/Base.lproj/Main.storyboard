@@ -362,6 +362,16 @@
                                     <action selector="analyticsTapped:" destination="jmr-Iy-1s1" eventType="touchUpInside" id="9dA-65-imT"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nGJ-6e-jJs">
+                                <rect key="frame" x="110" y="536" width="172" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.98039215800000001" green="0.94509804249999996" blue="0.6784313917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Simulate Logs"/>
+                                <connections>
+                                    <action selector="simulateLogsTapped:" destination="jmr-Iy-1s1" eventType="touchUpInside" id="mNk-G1-Pm2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="H36-t2-T1a"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -370,6 +380,7 @@
                     <connections>
                         <outlet property="analyticsButton" destination="J2R-6b-pJl" id="xf4-Qp-3f0"/>
                         <outlet property="manageUsersButton" destination="d2h-yv-f4k" id="HjE-Xe-zOF"/>
+                        <outlet property="simulateLogsButton" destination="nGJ-6e-jJs" id="08u-PN-cCE"/>
                         <outlet property="viewLogsButton" destination="3eP-kP-fS4" id="LCX-vK-UOW"/>
                     </connections>
                 </viewController>
@@ -390,7 +401,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="txp-TQ-CF0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="808"/>
+            <point key="canvasLocation" x="2366" y="876"/>
+        </scene>
+        <!--Simulate Logs View Controller-->
+        <scene sceneID="XT8-eH-4cQ">
+            <objects>
+                <viewController storyboardIdentifier="SimulateLogsViewController" id="Hus-DT-3Ro" customClass="SimulateLogsViewController" customModule="Manage_Users" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qaU-zb-8op">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="nCw-eS-XgU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="21n-bF-ehG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="984" y="799"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WfZ-fg-XXa">

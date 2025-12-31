@@ -13,6 +13,8 @@ class AdminPanelViewController: UIViewController {
     @IBOutlet var viewLogsButton: UIView!
     @IBOutlet weak var analyticsButton: UIButton!
     
+    @IBOutlet weak var simulateLogsButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Admin Panel"
@@ -39,6 +41,14 @@ class AdminPanelViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(
             identifier: "analyticsViewController"
+        )
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func simulateLogsTapped(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(
+            identifier: "SimulateLogsViewController"
         )
         navigationController?.pushViewController(vc, animated: true)
     }

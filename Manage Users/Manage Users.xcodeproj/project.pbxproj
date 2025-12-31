@@ -79,8 +79,8 @@
 		D3230EB62EEE7F8A00B9FE73 = {
 			isa = PBXGroup;
 			children = (
+				D3230EC12EEE7F8A00B9FE73 /* Manage Users */,
 				4E6CCF7F2EFFE01C00DC15F9 /* View Logs */,
-				DA237E412F029B0600890062 /* New Group */,
 				D3230EC02EEE7F8A00B9FE73 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,14 +91,6 @@
 				D3230EBF2EEE7F8A00B9FE73 /* Manage Users.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		DA237E412F029B0600890062 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				D3230EC12EEE7F8A00B9FE73 /* Manage Users */,
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
