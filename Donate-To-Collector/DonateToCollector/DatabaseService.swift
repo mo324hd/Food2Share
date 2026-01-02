@@ -17,27 +17,22 @@ class DatabaseService {
     func fetchGroup(firstTable usersTableID: String, collectiongroupID collectionID: String, collectorgroupID collectorID: String, Completion: @escaping([BaseCollector]) -> Void)
     {
         let collectionPath = db.collection(usersTableID).document(collectionID).collection(collectorID)
-        print("DEBUG: Firebase address: \(collectionPath)")
-        print("DEBUG: Full Firebase path: \(collectionPath.path)")
         
         collectionPath.getDocuments
         {
             snapshot, error in
             guard let documents = snapshot?.documents, error == nil else
             {
-                print("DEBUG: No document found in row: \(usersTableID) or Error: \(String(describing: error))")
                 Completion([]);
                 return
             }
             if documents.isEmpty
             {
-                print("DEBUG: Collection is empty")
                 Completion([])
                 return
             }
             
             let rawDoc = snapshot?.documents ?? []
-            print("raw documents found in firebase: \(rawDoc.count)")
             
             if let rawFirst = rawDoc.first { print("first document data: \(rawFirst.data())") }
             

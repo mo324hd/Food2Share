@@ -45,7 +45,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         DatabaseService.sharedDatabase.fetchGroup(firstTable: "users", collectiongroupID: userID, collectorgroupID: collectorID)
         {
             [weak self] fetchedCollectors in self?.arrCollectors = fetchedCollectors
-            print("Firebase returned: \(fetchedCollectors.count)")
             
             self!.sortCollectorList()
             DispatchQueue.main.async
