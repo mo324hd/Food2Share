@@ -305,10 +305,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
     
     private func navigateToAdminScreen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let resultController = storyboard.instantiateViewController(withIdentifier: "AdminPanelViewController") as? AdminPanelViewController
 
-        resultController?.modalPresentationStyle = .fullScreen
-        self.present(resultController ?? ViewController() , animated: true, completion: nil)
+        let adminVC = storyboard.instantiateViewController(
+            identifier: "AdminPanelViewController"
+        )
+
+        let navController = UINavigationController(rootViewController: adminVC)
+
+        // Replace entire app flow
+        view.window?.rootViewController = navController
+        view.window?.makeKeyAndVisible()
     }
 
     

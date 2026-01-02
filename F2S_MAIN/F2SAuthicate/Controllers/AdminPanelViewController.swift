@@ -1,20 +1,51 @@
 //
 //  AdminPanelViewController.swift
-//  F2SAuthicate
+//  Manage Users
 //
-//  Created by abdulaziz on 31/12/2025.
+//  Created by BP-36-201-10 on 28/12/2025.
 //
 
 import UIKit
 
 class AdminPanelViewController: UIViewController {
+    
+    @IBOutlet weak var manageUsersButton: UIButton!
+    @IBOutlet var viewLogsButton: UIView!
 
+    
+    @IBOutlet weak var simulateLogsButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Admin Panel"
+        view.backgroundColor = .systemBackground
+    }
 
-        // Do any additional setup after loading the view.
+    @IBAction func manageUsersTapped(_ sender: UIButton) {
+        print("Nav controller:", navigationController as Any)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(
+            identifier: "UserTableViewController"
+        )
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    @IBAction func viewLogsTapped(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(
+            identifier: "LogsTableViewController"
+        )
+        navigationController?.pushViewController(vc, animated: true)
     }
     
-
-
+    
+    @IBAction func simulateLogsTapped(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(
+            identifier: "SimulateLogsViewController"
+        )
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
+
