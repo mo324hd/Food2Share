@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import Combine
 
 enum DonationFrequency: String, CaseIterable, Identifiable, Codable {
     case monthly = "Monthly"
