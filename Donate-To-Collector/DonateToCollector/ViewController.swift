@@ -8,6 +8,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import FirebaseFirestore
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     

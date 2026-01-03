@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import FirebaseFirestore
 
 protocol distanceUpdaterDelegate: AnyObject
 {
@@ -21,8 +22,49 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var lblCollectorAboutMe: UILabel!
     
     var userLocation: CLLocation?
+    var activeLog: String?
     var collectorDetails: BaseCollector?
     weak var delegate: distanceUpdaterDelegate?
+    
+    @IBAction func btnConfirmDonation(_ sender: UIButton)
+    {
+        let db = Firestore.firestore()
+        db.collection("DonorSubmissions").whereField("Role", isEqualTo: "donor").order(by: "Details.timestamp", descending: true).limit(to: 1).getDocuments { (snapshot, error) in
+            
+            if let document = snapshot?.documents.first
+            {
+                let docID = document.documentID
+                
+                db.collection("DonorSubmissions").document(docID).updateData(["Selected Collector": self.lblCollectorName.text!]) { err in
+                    
+                    DispatchQueue.main.async
+                    {
+                        if err == nil
+                        {
+                            self.presentSuccessAlert(for: self.lblCollectorName.text!)
+                        }
+                        else
+                        {
+                            print("No recent requests found: \(error?.localizedDescription ?? "Unknown error")")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func presentSuccessAlert(for collector: String) {
+        let alert = UIAlertController(title: "Success!", message: "Your have been assignd to Collector: \(collector)",
+            preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            // Optional: Send them back to the main screen after clicking OK
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

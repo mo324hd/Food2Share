@@ -158,12 +158,12 @@
         <!--Donation Details-->
         <scene sceneID="z4U-HK-ejx">
             <objects>
-                <viewController id="q8S-tf-IKb" sceneMemberID="viewController">
+                <viewController id="q8S-tf-IKb" customClass="DonationDetailsViewController" customModule="DonateToCollector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DSz-vG-oW5">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Food Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ijE-14-5ky">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Food Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ijE-14-5ky">
                                 <rect key="frame" x="85" y="238" width="231" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="DQo-CA-p3C"/>
@@ -171,22 +171,22 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r1m-62-98D">
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r1m-62-98D">
                                 <rect key="frame" x="85" y="322" width="231" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="aGm-Ed-j0k"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4g2-yV-EAW">
+                            <datePicker tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4g2-yV-EAW">
                                 <rect key="frame" x="81" y="519" width="240" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="BGD-VE-Fn5"/>
                                     <constraint firstAttribute="width" constant="240" id="SBB-jp-NtD"/>
                                 </constraints>
                             </datePicker>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Additional Notes (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdT-Jp-HYw">
+                            <textField opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Additional Notes (Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdT-Jp-HYw">
                                 <rect key="frame" x="85" y="406" width="231" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="d6w-kB-ufs"/>
@@ -197,7 +197,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rZ-ux-Znr">
                                 <rect key="frame" x="149" y="490" width="103" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Ywf-eq-Ssu"/>
+                                    <constraint firstAttribute="height" constant="21" id="l3v-st-4EL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemPurpleColor"/>
@@ -211,6 +211,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Find A Collector"/>
                                 <connections>
+                                    <action selector="btnRecordData" destination="q8S-tf-IKb" eventType="touchUpInside" id="udb-ue-av7"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="IZa-iP-Gfa"/>
                                 </connections>
                             </button>
@@ -219,27 +220,33 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4g2-yV-EAW" firstAttribute="leading" secondItem="dn4-7u-pIQ" secondAttribute="leading" constant="81" id="037-OX-YKG"/>
-                            <constraint firstItem="4g2-yV-EAW" firstAttribute="top" secondItem="6rZ-ux-Znr" secondAttribute="bottom" constant="8" symbolic="YES" id="0GG-rP-WrM"/>
                             <constraint firstItem="dn4-7u-pIQ" firstAttribute="trailing" secondItem="r1m-62-98D" secondAttribute="trailing" constant="86" id="65B-Sv-9ox"/>
                             <constraint firstItem="dn4-7u-pIQ" firstAttribute="trailing" secondItem="rdT-Jp-HYw" secondAttribute="trailing" constant="86" id="6gH-Cc-qaB"/>
                             <constraint firstItem="mq9-x1-yCG" firstAttribute="leading" secondItem="dn4-7u-pIQ" secondAttribute="leading" constant="114" id="6la-qr-PP9"/>
-                            <constraint firstItem="dn4-7u-pIQ" firstAttribute="trailing" secondItem="6rZ-ux-Znr" secondAttribute="trailing" constant="150" id="C4C-AG-F3y"/>
-                            <constraint firstItem="6rZ-ux-Znr" firstAttribute="top" secondItem="rdT-Jp-HYw" secondAttribute="bottom" constant="50" id="Cpr-MJ-AUj"/>
+                            <constraint firstItem="4g2-yV-EAW" firstAttribute="top" secondItem="6rZ-ux-Znr" secondAttribute="bottom" constant="8" symbolic="YES" id="8w5-0k-EAd"/>
                             <constraint firstItem="rdT-Jp-HYw" firstAttribute="leading" secondItem="dn4-7u-pIQ" secondAttribute="leading" constant="85" id="HDZ-rU-4qq"/>
                             <constraint firstItem="rdT-Jp-HYw" firstAttribute="top" secondItem="r1m-62-98D" secondAttribute="bottom" constant="50" id="IKm-uQ-Nou"/>
                             <constraint firstItem="dn4-7u-pIQ" firstAttribute="trailing" secondItem="mq9-x1-yCG" secondAttribute="trailing" constant="114" id="Ium-mx-VcV"/>
                             <constraint firstItem="dn4-7u-pIQ" firstAttribute="trailing" secondItem="ijE-14-5ky" secondAttribute="trailing" constant="86" id="J26-yJ-v0B"/>
                             <constraint firstItem="ijE-14-5ky" firstAttribute="leading" secondItem="dn4-7u-pIQ" secondAttribute="leading" constant="85" id="MqA-PL-XC9"/>
                             <constraint firstItem="ijE-14-5ky" firstAttribute="top" secondItem="dn4-7u-pIQ" secondAttribute="top" constant="60" id="NGA-pz-i49"/>
-                            <constraint firstItem="6rZ-ux-Znr" firstAttribute="leading" secondItem="dn4-7u-pIQ" secondAttribute="leading" constant="149" id="Pel-do-SBH"/>
                             <constraint firstItem="r1m-62-98D" firstAttribute="leading" secondItem="dn4-7u-pIQ" secondAttribute="leading" constant="85" id="Vhg-2G-3t0"/>
                             <constraint firstItem="r1m-62-98D" firstAttribute="top" secondItem="ijE-14-5ky" secondAttribute="bottom" constant="50" id="WZJ-a2-XHp"/>
                             <constraint firstItem="dn4-7u-pIQ" firstAttribute="trailing" secondItem="4g2-yV-EAW" secondAttribute="trailing" constant="81" id="fej-8F-LmM"/>
+                            <constraint firstItem="dn4-7u-pIQ" firstAttribute="trailing" secondItem="6rZ-ux-Znr" secondAttribute="trailing" constant="150" id="iVS-N6-Sk8"/>
                             <constraint firstItem="dn4-7u-pIQ" firstAttribute="bottom" secondItem="mq9-x1-yCG" secondAttribute="bottom" constant="33" id="igO-ab-dIk"/>
+                            <constraint firstItem="6rZ-ux-Znr" firstAttribute="top" secondItem="rdT-Jp-HYw" secondAttribute="bottom" constant="50" id="l0g-c9-O0H"/>
                             <constraint firstItem="mq9-x1-yCG" firstAttribute="top" secondItem="4g2-yV-EAW" secondAttribute="bottom" constant="120" id="lip-XW-h2g"/>
+                            <constraint firstItem="6rZ-ux-Znr" firstAttribute="leading" secondItem="dn4-7u-pIQ" secondAttribute="leading" constant="149" id="qbl-Fn-fqs"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Donation Details" id="dD7-90-sSb"/>
+                    <connections>
+                        <outlet property="DatePicker" destination="4g2-yV-EAW" id="qEf-gg-IgQ"/>
+                        <outlet property="txtFoodType" destination="ijE-14-5ky" id="hi8-K7-6nd"/>
+                        <outlet property="txtNotes" destination="rdT-Jp-HYw" id="iZ7-90-N1q"/>
+                        <outlet property="txtQuantity" destination="r1m-62-98D" id="4eP-8H-y1i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fv-8r-R6h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -310,6 +317,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Confirm Donation"/>
+                                <connections>
+                                    <action selector="btnConfirmDonation:" destination="azb-wJ-hpl" eventType="touchUpInside" id="1iL-S4-qmi"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jD-we-60B">
                                 <rect key="frame" x="147" y="319" width="230" height="20.333333333333314"/>
