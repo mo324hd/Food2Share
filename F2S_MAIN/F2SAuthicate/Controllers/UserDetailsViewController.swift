@@ -16,7 +16,6 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
-    @IBOutlet weak var activeSwitch: UISwitch!
     @IBOutlet weak var roleButton: UIButton!
     @IBOutlet weak var deleteUserButton: UIButton!
     @IBOutlet weak var restoreUserButton: UIButton!
@@ -36,7 +35,6 @@ class UserDetailsViewController: UIViewController {
            emailLabel.text = user.email
            ageLabel.text = String(user.age)
            roleLabel.text = user.role
-           activeSwitch.isOn = user.isActive
         
         if user.role.lowercased() == "admin" {
                 roleButton.isEnabled = false
@@ -46,13 +44,7 @@ class UserDetailsViewController: UIViewController {
                 roleButton.alpha = 1.0
             }
         
-        if user.role.lowercased() == "admin" {
-                activeSwitch.isEnabled = false
-                activeSwitch.alpha = 0.5
-            } else {
-                activeSwitch.isEnabled = true
-                activeSwitch.alpha = 1.0
-            }
+        
        }
     
     private func showAlert(title: String, message: String) {
@@ -70,43 +62,7 @@ class UserDetailsViewController: UIViewController {
        
     }
     
-    @IBAction func activeSwitchChanged(_ sender: UISwitch) {
-        guard let user = user else { return }
-
-        let currentUserId = Auth.auth().currentUser?.uid
-
-        
-        if user.role.lowercased() == "admin" && user.id == currentUserId {
-            sender.isOn = true // rollback
-            showAlert(
-                title: "Action Not Allowed",
-                message: "You cannot deactivate your own admin account."
-            )
-            return
-        }
-
-        db.collection("Users(Admin)")
-            .document(user.id)
-            .updateData([
-                "isActive": sender.isOn
-            ]) { error in
-                if let error = error {
-                    print("❌ Failed to update isActive:", error)
-                    sender.isOn.toggle() // rollback UI
-                } else {
-                    print("✅ User active status updated")
-
-                    // 🧾 LOG ACTION (ADD THIS 👇)
-                    let status = sender.isOn ? "activated" : "deactivated"
-
-                    AuditLogger.log(
-                        action: "USER_STATUS_CHANGED",
-                        message: "Admin \(status) user \(user.id)",
-                        targetUserId: user.id
-                    )
-                }
-            }
-    }
+    
 
     
     @IBAction func changeRoleTapped(_ sender: UIButton) {
