@@ -8,6 +8,8 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import FirebaseCore
+import FirebaseAnalytics
 
 class UserDetailsViewController: UIViewController {
     
@@ -122,6 +124,7 @@ class UserDetailsViewController: UIViewController {
                         message: "Admin changed role of \(user.id) to \(newRole)",
                         targetUserId: user.id
                     )
+        Analytics.logEvent("Role Updated", parameters: ["User":user.id])
     }
     
     private func configureDeleteButton() {
@@ -175,6 +178,7 @@ class UserDetailsViewController: UIViewController {
 
                 self.navigationController?.popViewController(animated: true)
             }
+        Analytics.logEvent("User Deleted", parameters: ["Users": user.id])
     }
     
     @IBAction func restoreUserTapped(_ sender: UIButton) {
@@ -221,6 +225,7 @@ class UserDetailsViewController: UIViewController {
 
                 self.navigationController?.popViewController(animated: true)
             }
+        Analytics.logEvent("User Restored", parameters: ["User": user.id])
     }
     
     private func configureRestoreButton() {
