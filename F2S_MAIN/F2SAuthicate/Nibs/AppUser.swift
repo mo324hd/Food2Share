@@ -11,41 +11,39 @@ import FirebaseFirestore
 
 struct AppUser {
     let id: String
-    let firstName: String
-    let lastName: String
+    let fullname: String
     let email: String
-    let role: String
-    let age: Int
-    let isActive: Bool
-
-    var fullName: String {
-        "\(firstName) \(lastName)"
-    }
-    
+    let location: String
+    let phone: Int
+    let userType: String
     let isDeleted: Bool
-    let deletedAt: Date?
+    let createdAt: Date
+}
 
+extension AppUser {
     init?(document: DocumentSnapshot) {
         let data = document.data()
+        
         guard
-            let firstName = data?["firstName"] as? String,
-            let lastName = data?["lastName"] as? String,
+            let fullname = data?["fullname"] as? String,
             let email = data?["email"] as? String,
-            let role = data?["role"] as? String,
-            let age = data?["age"] as? Int,
-            let isActive = data?["isActive"] as? Bool
-        else { return nil }
+            let location = data?["location"] as? String,
+            let phone = data?["phone"] as? Int,
+            let userType = data?["userType"] as? String,
+            let isDeleted = data?["isDeleted"] as? Bool,
+            let timestamp = data?["createdAt"] as? Timestamp
+        else {
+            return nil
+        }
 
         self.id = document.documentID
-        self.firstName = firstName
-        self.lastName = lastName
+        self.fullname = fullname
         self.email = email
-        self.role = role
-        self.age = age
-        self.isActive = isActive
-
-        self.isDeleted = data?["isDeleted"] as? Bool ?? false
-        self.deletedAt = (data?["deletedAt"] as? Timestamp)?.dateValue()
+        self.location = location
+        self.phone = phone
+        self.userType = userType
+        self.isDeleted = isDeleted
+        self.createdAt = timestamp.dateValue()
     }
 }
 

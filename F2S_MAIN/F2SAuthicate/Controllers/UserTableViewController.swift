@@ -26,12 +26,10 @@ class UserTableViewController: UITableViewController {
     
     enum UserStatusFilter {
         case all
-        case active
-        case inactive
         case deleted
     }
 
-    private var statusFilter: UserStatusFilter = .active
+    private var statusFilter: UserStatusFilter = .all
 
     
     
@@ -80,16 +78,6 @@ class UserTableViewController: UITableViewController {
 
         alert.addAction(UIAlertAction(title: "All", style: .default) { _ in
             self.statusFilter = .all
-            self.applyFilters()
-        })
-
-        alert.addAction(UIAlertAction(title: "Active", style: .default) { _ in
-            self.statusFilter = .active
-            self.applyFilters()
-        })
-
-        alert.addAction(UIAlertAction(title: "Inactive", style: .default) { _ in
-            self.statusFilter = .inactive
             self.applyFilters()
         })
 
@@ -147,30 +135,33 @@ class UserTableViewController: UITableViewController {
     
   
     
-    private func listenForUsers() {
-        listener = db.collection("Users(Admin)")
-            .addSnapshotListener { [weak self] snapshot, error in
+    func listenForUsers() {
+        Firestore.firestore()
+            .collection("users")
+            .whereField("isDeleted", isEqualTo: false)
+            .addSnapshotListener { snapshot, error in
+                
                 if let error = error {
-                    print("❌ Listener error:", error)
+                    print("Error fetching users:", error)
                     return
                 }
 
-                guard let self = self else { return }
-
-                self.allUsers = snapshot?.documents.compactMap {
+                self.users = snapshot?.documents.compactMap {
                     AppUser(document: $0)
                 } ?? []
 
-                // ✅ ALWAYS apply filters
-                self.applyFilters()
+                self.tableView.reloadData()
             }
+        
+        self.applyFilters()
     }
+
     deinit {
-            listener?.remove()  // 👈 STEP 4
+            listener?.remove()
         }
 
     private func fetchUsers() {
-        db.collection("Users(Admin)")
+        db.collection("users")
             .getDocuments { [weak self] snapshot, error in
                 if let error = error {
                     print("❌ Error:", error)
@@ -195,17 +186,13 @@ class UserTableViewController: UITableViewController {
         // Role Filter
         if let role = selectedRole {
                results = results.filter {
-                   $0.role.lowercased() == role
+                   $0.userType.lowercased() == role
                }
            }
         
         switch statusFilter {
         case .all:
             break
-        case .active:
-            results = results.filter { $0.isActive && !$0.isDeleted }
-        case .inactive:
-            results = results.filter { !$0.isActive && !$0.isDeleted }
         case .deleted:
             results = results.filter { $0.isDeleted }
         }
@@ -217,8 +204,7 @@ class UserTableViewController: UITableViewController {
             let query = searchText.lowercased()
 
             results = results.filter {
-                $0.firstName.lowercased().contains(query) ||
-                $0.lastName.lowercased().contains(query) ||
+                $0.fullname.lowercased().contains(query) ||
                 $0.email.lowercased().contains(query)
             }
         }
@@ -273,9 +259,9 @@ class UserTableViewController: UITableViewController {
         
         
 
-        cell.nameLabel.text = user.fullName
+        cell.nameLabel.text = user.fullname
         cell.emailLabel.text = user.email
-        cell.roleLabel.text = user.role
+        cell.roleLabel.text = user.userType
         
         cell.onViewTapped = { [weak self] in
                 self?.showUserDetails(user: user)

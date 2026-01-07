@@ -16,7 +16,6 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var roleButton: UIButton!
     @IBOutlet weak var deleteUserButton: UIButton!
@@ -33,12 +32,11 @@ class UserDetailsViewController: UIViewController {
     
     private func populateUI() {
            idLabel.text = user.id
-           nameLabel.text = user.fullName
+           nameLabel.text = user.fullname
            emailLabel.text = user.email
-           ageLabel.text = String(user.age)
-           roleLabel.text = user.role
+           roleLabel.text = user.userType
         
-        if user.role.lowercased() == "admin" {
+        if user.userType.lowercased() == "admin" {
                 roleButton.isEnabled = false
                 roleButton.alpha = 0.5
             } else {
@@ -70,7 +68,7 @@ class UserDetailsViewController: UIViewController {
     @IBAction func changeRoleTapped(_ sender: UIButton) {
         guard user != nil else { return }
         
-        guard user.role.lowercased() != "admin" else {
+        guard user.userType.lowercased() != "admin" else {
                 let alert = UIAlertController(
                     title: "Action Not Allowed",
                     message: "Admin roles cannot be changed.",
@@ -106,10 +104,10 @@ class UserDetailsViewController: UIViewController {
     private func updateRole(to newRole: String) {
         guard let user = user else { return }
 
-        db.collection("Users(Admin)")
+        db.collection("users")
             .document(user.id)
             .updateData([
-                "role": newRole
+                "userType": newRole
             ]) { error in
                 if let error = error {
                     print("❌ Role update failed:", error)
@@ -159,11 +157,10 @@ class UserDetailsViewController: UIViewController {
     }
     
     private func softDeleteUser(_ user: AppUser) {
-        db.collection("Users(Admin)")
+        db.collection("users")
             .document(user.id)
             .updateData([
                 "isDeleted": true,
-                "deletedAt": Timestamp(date: Date())
             ]) { error in
                 if let error = error {
                     print("❌ Delete failed:", error)
@@ -178,7 +175,9 @@ class UserDetailsViewController: UIViewController {
 
                 self.navigationController?.popViewController(animated: true)
             }
-        Analytics.logEvent("User Deleted", parameters: ["Users": user.id])
+        Analytics.logEvent("User Deleted", parameters:
+                            ["Users": user.id,
+                             "Deleted At": Date()])
     }
     
     @IBAction func restoreUserTapped(_ sender: UIButton) {
@@ -205,12 +204,10 @@ class UserDetailsViewController: UIViewController {
     }
     
     private func restoreUser(_ user: AppUser) {
-        db.collection("Users(Admin)")
+        db.collection("users")
             .document(user.id)
             .updateData([
                 "isDeleted": false,
-                "deletedAt": FieldValue.delete(),
-                "isActive": true
             ]) { error in
                 if let error = error {
                     print("❌ Restore failed:", error)
@@ -225,7 +222,8 @@ class UserDetailsViewController: UIViewController {
 
                 self.navigationController?.popViewController(animated: true)
             }
-        Analytics.logEvent("User Restored", parameters: ["User": user.id])
+        Analytics.logEvent("User Restored", parameters: ["User": user.id,
+                                                         "Restored At": Date()])
     }
     
     private func configureRestoreButton() {
