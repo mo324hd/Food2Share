@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAnalytics
 
 class LogsTableViewController: UITableViewController, UISearchResultsUpdating {
 
@@ -81,6 +82,12 @@ class LogsTableViewController: UITableViewController, UISearchResultsUpdating {
               action: #selector(pickEndDate)
           )
         ]
+        
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+                    AnalyticsParameterScreenName: "LogsTable",
+                    AnalyticsParameterScreenClass: "LogsTableViewController"
+                ])
+        
             listenForLogs()
            
         }

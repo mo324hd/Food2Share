@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class SimulateLogsViewController: UIViewController {
     
@@ -22,6 +23,11 @@ class SimulateLogsViewController: UIViewController {
         title = "Simulate Logs"
 
         // Do any additional setup after loading the view.
+        
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+                    AnalyticsParameterScreenName: "SimulateLogs",
+                    AnalyticsParameterScreenClass: "SimulateLogsViewController"
+                ])
     }
     
     @IBAction func foodItemListedTapped(_ sender: UIButton) {

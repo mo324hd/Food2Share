@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAnalytics
 
 class AdminPanelViewController: UIViewController {
     
@@ -19,6 +20,11 @@ class AdminPanelViewController: UIViewController {
         super.viewDidLoad()
         title = "Admin Panel"
         view.backgroundColor = .systemBackground
+        
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+                    AnalyticsParameterScreenName: "AdminPanel",
+                    AnalyticsParameterScreenClass: "AdminPanelViewController"
+                ])
     }
 
     @IBAction func manageUsersTapped(_ sender: UIButton) {
@@ -28,6 +34,10 @@ class AdminPanelViewController: UIViewController {
         let vc = storyboard.instantiateViewController(
             identifier: "UserTableViewController"
         )
+        Analytics.logEvent("manage_users_tapped", parameters: [
+                "action_type": "button_click"
+            ])
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -36,6 +46,11 @@ class AdminPanelViewController: UIViewController {
         let vc = storyboard.instantiateViewController(
             identifier: "LogsTableViewController"
         )
+        
+        Analytics.logEvent("view_logs_tapped", parameters: [
+            "action_type": "button_click"
+        ])
+        
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -45,6 +60,11 @@ class AdminPanelViewController: UIViewController {
         let vc = storyboard.instantiateViewController(
             identifier: "SimulateLogsViewController"
         )
+        
+        Analytics.logEvent("simulate_logs_tapped", parameters: [
+                "action_type": "button_click"
+            ])
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 }

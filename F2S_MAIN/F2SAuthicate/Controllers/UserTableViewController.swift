@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseCore
 import FirebaseFirestore
-
+import FirebaseAnalytics
 
 
 
@@ -65,6 +65,11 @@ class UserTableViewController: UITableViewController {
                UIBarButtonItem(title: "Role", style: .plain, target: self, action: #selector(showRoleFilter)),
                UIBarButtonItem(title: "Status", style: .plain, target: self, action: #selector(showStatusFilter))
            ]
+           
+           Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+                      AnalyticsParameterScreenName: "ManageUsers",
+                      AnalyticsParameterScreenClass: "UserTableViewController"
+                  ])
            
            listenForUsers()
        }
@@ -153,6 +158,10 @@ class UserTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         
+        Analytics.logEvent("realtime_update", parameters: [
+                    "collection": "users"
+                ])
+        
         self.applyFilters()
     }
 
@@ -237,6 +246,10 @@ class UserTableViewController: UITableViewController {
         let user = filteredUsers[sender.tag]
         print("✅ View tapped for:", user.id)
         showUserDetails(user: user)
+        
+        Analytics.logEvent("view_tapped", parameters: [
+                "action_type": "button_click"
+            ])
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

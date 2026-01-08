@@ -13,6 +13,7 @@ import GoogleSignInSwift
 import FirebaseAuth
 import AuthenticationServices
 import CryptoKit
+import FirebaseAnalytics
 
 final class LoginViewController: UIViewController {
 
@@ -42,6 +43,12 @@ final class LoginViewController: UIViewController {
         passwordTextField.isSecureTextEntry = true
         loginOt.layer.cornerRadius = 10
         selectUserType(.donor)
+        
+        // Screen tracking
+               Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+                   AnalyticsParameterScreenName: "LoginScreen",
+                   AnalyticsParameterScreenClass: "LoginViewController"
+               ])
     }
 
     
@@ -141,6 +148,11 @@ final class LoginViewController: UIViewController {
                 }
             }
         }
+        
+        // After successful authentication
+            Analytics.logEvent("login", parameters: [
+                "method": "email"
+            ])
     }
 
 
@@ -206,6 +218,11 @@ extension LoginViewController {
                 }
             }
         }
+        
+        // After successful authentication
+            Analytics.logEvent("login", parameters: [
+                "method": "Google"
+            ])
     }
     
     private func startAppleLogin() {

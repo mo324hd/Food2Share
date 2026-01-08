@@ -28,6 +28,15 @@ class UserDetailsViewController: UIViewController {
             configureRestoreButton()
             super.viewDidLoad()
             populateUI()
+        
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+                    AnalyticsParameterScreenName: "UserDetails",
+                    AnalyticsParameterScreenClass: "UserDetailsViewController"
+                ])
+
+                Analytics.logEvent("view_user_details", parameters: [
+                    "user_id": user.id
+                ])
         }
     
     private func populateUI() {
@@ -97,6 +106,10 @@ class UserDetailsViewController: UIViewController {
            }
 
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        Analytics.logEvent("change_role_tapped", parameters: [
+                "action_type": "button_click"
+            ])
 
         present(alert, animated: true)
     }
@@ -152,6 +165,10 @@ class UserDetailsViewController: UIViewController {
                popover.sourceView = sender
                popover.sourceRect = sender.bounds
            }
+        
+        Analytics.logEvent("delete_user_tapped", parameters: [
+                "action_type": "button_click"
+            ])
 
         present(alert, animated: true)
     }
@@ -200,6 +217,10 @@ class UserDetailsViewController: UIViewController {
                popover.sourceRect = sender.bounds
            }
 
+        Analytics.logEvent("restore_tapped", parameters: [
+                "action_type": "button_click"
+            ])
+        
         present(alert, animated: true)
     }
     
