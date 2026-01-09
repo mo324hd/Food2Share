@@ -49,8 +49,8 @@ final class FirebaseAuthHelper {
                 "phone": phone,
                 "email": email,
                 "location": location,
+                "isDeleted": false,
                 "userType": userType.rawValue,
-                "isVerified": false,
                 "createdAt": Timestamp()
             ]
 
@@ -109,10 +109,17 @@ final class FirebaseAuthHelper {
 
             guard
                 let data = document?.data(),
-                let isVerified = data["isVerified"] as? Bool,
                 let userType = data["userType"] as? String
             else {
                 completion(.failure(AuthError.invalidUserData))
+                return
+            }
+
+            // Check if account is deleted
+            let isDeleted = data["isDeleted"] as? Bool ?? false
+            if isDeleted {
+                try? Auth.auth().signOut()
+                completion(.failure(AuthError.accountDeleted))
                 return
             }
 
@@ -130,11 +137,7 @@ final class FirebaseAuthHelper {
                     return
                 }
 
-                if isVerified && firebaseVerified {
-                    completion(.success(userType))
-                } else {
-                    completion(.failure(AuthError.notVerified))
-                }
+                completion(.success(userType))
             }
         }
     }
@@ -157,6 +160,7 @@ enum UserType: String {
 enum AuthError: LocalizedError {
     case notVerified
     case invalidUserData
+    case accountDeleted
     case unknown
 
     var errorDescription: String? {
@@ -165,6 +169,8 @@ enum AuthError: LocalizedError {
             return "Your account is pending verification."
         case .invalidUserData:
             return "User data is invalid."
+        case .accountDeleted:
+            return "Login failed. This account has been deleted."
         case .unknown:
             return "Something went wrong. Please try again."
         }
@@ -188,8 +194,8 @@ extension FirebaseAuthHelper {
                 "email": user.email ?? "",
                 "location": "",
                 "phone": "",
+                "isDeleted": false,
                 "userType": UserType.donor.rawValue,  // default OR detect
-                "isVerified": true,
                 "createdAt": Timestamp()
             ]
 

@@ -101,7 +101,7 @@ final class RegistrationViewController: UIViewController {
                 switch result {
                 case .success:
                     self.showAlert(
-                        "Registration successful.\nYour account is pending verification."
+                        "Registration successful.\nYou can login now."
                     ) {
                         self.dismiss(animated: true)
                     }
