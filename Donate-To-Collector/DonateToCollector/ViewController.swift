@@ -35,6 +35,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         CollectorList.dataSource = self
         locationManager.delegate = self
         
+        CollectorList.layer.cornerRadius = 20
+        CollectorList.layer.masksToBounds = true
+        CollectorList.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.1)
+        CollectorList.delegate = self
+        CollectorList.dataSource = self
+        
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         loadFirebaseData(userID: "3crcHBEDlkiB4XFyUFnn", collectorID: "collector")
@@ -91,6 +97,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         DispatchQueue.main.async
         {
             self.CollectorList.reloadData()
+            print("DEBUG: stopping loading animation")
             self.loadingIcon.stopAnimating()
         }
     }
