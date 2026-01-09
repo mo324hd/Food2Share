@@ -26,7 +26,5 @@
 	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:176080339266:ios:cde5f4fc3ef79017fdc8db</string>
-	<key>DATABASE_URL</key>
-	<string>https://food2share-5a956-default-rtdb.asia-southeast1.firebasedatabase.app/</string>
 </dict>
 </plist>

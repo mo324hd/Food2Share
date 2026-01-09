@@ -14,3 +14,7 @@ struct Orgs {
 struct campaigns {
     
 }
+
+struct foodItems {
+    
+}
