@@ -84,6 +84,16 @@ class DonationDetailsViewController: UIViewController, UITextFieldDelegate {
         txtFoodType.delegate = self
         txtQuantity.delegate = self
         txtNotes.delegate = self
+        
+        let customCGColor = UIColor(red: 74.0/255.0, green: 36.0/255.0, blue: 157.0/255.0, alpha: 1.0).cgColor
+        setIcon(to: txtFoodType, systemName: "fork.knife.circle")
+        addUnderline(to: txtFoodType, using: customCGColor)
+        
+        setIcon(to: txtQuantity, systemName: "numbers")
+        addUnderline(to: txtQuantity, using: customCGColor)
+        
+        setIcon(to: txtNotes, systemName: "pencil.and.list.clipboard")
+        addUnderline(to: txtNotes, using: customCGColor)
         // Do any additional setup after loading the view.
     }
     
@@ -95,6 +105,35 @@ class DonationDetailsViewController: UIViewController, UITextFieldDelegate {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    func addUnderline(to textField: UITextField, using color: CGColor)
+    {
+        let underline = CALayer()
+        underline.frame = CGRect(x: 0, y: textField.frame.height - 2, width: textField.frame.width, height: 2)
+        underline.backgroundColor = color
+        
+        textField.layer.addSublayer(underline)
+        textField.borderStyle = .none
+    }
+    
+    func setIcon(to textfield: UITextField, systemName: String)
+    {
+        let iconImageView = UIImageView(image: UIImage(systemName: systemName))
+        iconImageView.tintColor = .systemGray
+        iconImageView.contentMode = .scaleAspectFit
+        
+        let containerSize: CGFloat = 30
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: containerSize, height: containerSize))
+        
+        let iconSize: CGFloat = 25
+        iconImageView.frame = CGRect(x: (containerSize - iconSize) / 2, y: (containerSize - iconSize) / 2, width: iconSize, height: iconSize)
+        
+        iconImageView.center = CGPoint(x: container.bounds.midX, y: container.bounds.midY)
+        
+        container.addSubview(iconImageView)
+        textfield.leftView = container
+        textfield.leftViewMode = .always
     }
     
     
