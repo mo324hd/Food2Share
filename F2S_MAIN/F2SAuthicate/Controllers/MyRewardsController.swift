@@ -15,14 +15,14 @@ class MyRewardsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       
+        navigationItem.hidesBackButton = true
         
     }
 
     
     @IBAction func close(_ sender: Any) {
         
-        self.dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func firstDonation(_ sender: Any) {

@@ -138,8 +138,10 @@ final class LoginViewController: UIViewController {
 
                     if userType == "admin" {
                         self.navigateToAdminScreen()
-                    } else {
-                        self.showAlert("Welcome \(userName)", title: "Login Success")
+                    } else if userType == "donor" {
+                        self.navigateToDonorScreen()
+                    }else{
+                        self.showAlert("Welcome \(userName), type \(userType)", title: "Login Success")
                     }
 
                 case .failure(let error):
@@ -331,6 +333,14 @@ extension LoginViewController: ASAuthorizationControllerDelegate, ASAuthorizatio
 
         // Replace entire app flow
         view.window?.rootViewController = navController
+        view.window?.makeKeyAndVisible()
+    }
+
+    private func navigateToDonorScreen() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let donorNavController = storyboard.instantiateViewController(withIdentifier: "donorNavController")
+
+        view.window?.rootViewController = donorNavController
         view.window?.makeKeyAndVisible()
     }
 

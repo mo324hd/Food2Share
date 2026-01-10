@@ -15,7 +15,21 @@
 		8367D2C92EF3805500401040 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8367D2C82EF3805500401040 /* FirebaseAuth */; };
 		8367D2CB2EF3805500401040 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8367D2CA2EF3805500401040 /* FirebaseCore */; };
 		8367D2CD2EF3805500401040 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8367D2CC2EF3805500401040 /* FirebaseFirestore */; };
+		E265B0DA2F130336000351B3 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = E265B0D92F130336000351B3 /* DGCharts */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E265B0DE2F130592000351B3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		83CB5A702EF37010000C3999 /* F2SAuthicate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = F2SAuthicate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +68,7 @@
 				832E45C32F0064760005E0E6 /* GoogleSignIn in Frameworks */,
 				8367D2C92EF3805500401040 /* FirebaseAuth in Frameworks */,
 				502129CE2F0E700600EFC619 /* FirebaseAnalyticsCore in Frameworks */,
+				E265B0DA2F130336000351B3 /* DGCharts in Frameworks */,
 				8367D2CD2EF3805500401040 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +102,7 @@
 				83CB5A6C2EF37010000C3999 /* Sources */,
 				83CB5A6D2EF37010000C3999 /* Frameworks */,
 				83CB5A6E2EF37010000C3999 /* Resources */,
+				E265B0DE2F130592000351B3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -105,6 +121,7 @@
 				502129CB2F0E700600EFC619 /* FirebaseAnalytics */,
 				502129CD2F0E700600EFC619 /* FirebaseAnalyticsCore */,
 				502129CF2F0E700600EFC619 /* FirebaseAnalyticsIdentitySupport */,
+				E265B0D92F130336000351B3 /* DGCharts */,
 			);
 			productName = F2SAuthicate;
 			productReference = 83CB5A702EF37010000C3999 /* F2SAuthicate.app */;
@@ -137,6 +154,7 @@
 			packageReferences = (
 				8367D2C72EF3805500401040 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				832E45C12F0064760005E0E6 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				E265B0D82F130336000351B3 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 83CB5A712EF37010000C3999 /* Products */;
@@ -392,6 +410,14 @@
 				minimumVersion = 12.7.0;
 			};
 		};
+		E265B0D82F130336000351B3 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -431,6 +457,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8367D2C72EF3805500401040 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		E265B0D92F130336000351B3 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E265B0D82F130336000351B3 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
