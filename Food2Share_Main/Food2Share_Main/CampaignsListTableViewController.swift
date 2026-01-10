@@ -1,5 +1,5 @@
 //
-//  FoodItemsListTableViewController.swift
+//  CampaignsListTableViewController.swift
 //  Food2Share_Main
 //
 //  Created by N M on 1/10/26.
@@ -7,18 +7,16 @@
 
 import UIKit
 
-class FoodItemsListTableViewController: UITableViewController {
-    
-    var items = foodItems
-    @IBOutlet weak var ListTable: UITableView!
-    
+class CampaignsListTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ListTable.dataSource = self
-        ListTable.delegate = self
 
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -30,10 +28,10 @@ class FoodItemsListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return items.count
+        return 0
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
@@ -41,7 +39,7 @@ class FoodItemsListTableViewController: UITableViewController {
 
         return cell
     }
-    
+    */
 
     /*
     // Override to support conditional editing of the table view.
