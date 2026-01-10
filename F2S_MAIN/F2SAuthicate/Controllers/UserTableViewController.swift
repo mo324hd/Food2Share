@@ -141,29 +141,25 @@ class UserTableViewController: UITableViewController {
   
     
     func listenForUsers() {
-        Firestore.firestore()
+        listener = Firestore.firestore()
             .collection("users")
-            .whereField("isDeleted", isEqualTo: false)
-            .addSnapshotListener { snapshot, error in
+            .addSnapshotListener { [weak self] snapshot, error in
                 
                 if let error = error {
                     print("Error fetching users:", error)
                     return
                 }
 
-                self.users = snapshot?.documents.compactMap {
+                guard let self = self else { return }
+
+                self.allUsers = snapshot?.documents.compactMap {
                     AppUser(document: $0)
                 } ?? []
 
-                self.tableView.reloadData()
+                self.applyFilters()
             }
-        
-        Analytics.logEvent("realtime_update", parameters: [
-                    "collection": "users"
-                ])
-        
-        self.applyFilters()
     }
+
 
     deinit {
             listener?.remove()
@@ -190,28 +186,26 @@ class UserTableViewController: UITableViewController {
     private func applyFilters() {
         var results = allUsers
 
-       
-        
         // Role Filter
         if let role = selectedRole {
-               results = results.filter {
-                   $0.userType.lowercased() == role
-               }
-           }
-        
+            results = results.filter {
+                $0.userType.lowercased() == role
+            }
+        }
+
+        // Status Filter
         switch statusFilter {
         case .all:
-            break
+            results = results.filter { !$0.isDeleted }
+
         case .deleted:
             results = results.filter { $0.isDeleted }
         }
-
-        // 🔹 Search filter
+        // Search Filter
         if let searchText = searchController.searchBar.text,
            !searchText.isEmpty {
 
             let query = searchText.lowercased()
-
             results = results.filter {
                 $0.fullname.lowercased().contains(query) ||
                 $0.email.lowercased().contains(query)
@@ -224,6 +218,7 @@ class UserTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+
     
  
 
@@ -275,7 +270,13 @@ class UserTableViewController: UITableViewController {
         cell.nameLabel.text = user.fullname
         cell.emailLabel.text = user.email
         cell.roleLabel.text = user.userType
-        
+
+        if user.isDeleted {
+            cell.roleLabel.textColor = .systemGray
+        } else {
+            cell.roleLabel.textColor = .label
+        }
+
         cell.onViewTapped = { [weak self] in
                 self?.showUserDetails(user: user)
             }

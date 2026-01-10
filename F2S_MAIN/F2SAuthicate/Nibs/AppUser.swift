@@ -14,7 +14,7 @@ struct AppUser {
     let fullname: String
     let email: String
     let location: String
-    let phone: Int
+    let phone: String
     let userType: String
     let isDeleted: Bool
     let createdAt: Date
@@ -22,19 +22,36 @@ struct AppUser {
 
 extension AppUser {
     init?(document: DocumentSnapshot) {
-        let data = document.data()
-        
+        let data = document.data() ?? [:]
+
+        // Required fields
         guard
-            let fullname = data?["fullname"] as? String,
-            let email = data?["email"] as? String,
-            let location = data?["location"] as? String,
-            let phone = data?["phone"] as? Int,
-            let userType = data?["userType"] as? String,
-            let isDeleted = data?["isDeleted"] as? Bool,
-            let timestamp = data?["createdAt"] as? Timestamp
+            let email = data["email"] as? String,
+            let phone = data["phone"] as? String
         else {
+            print("❌ Critical fields missing:", document.documentID)
             return nil
         }
+
+        // Flexible field names
+        let fullname =
+            data["fullname"] as? String ??
+            data["fullName"] as? String ??
+            "Unknown"
+
+        let location =
+            data["location"] as? String ?? "N/A"
+
+        let userType =
+            data["userType"] as? String ??
+            data["role"] as? String ??
+            "unknown"
+
+        let isDeleted =
+            data["isDeleted"] as? Bool ?? false
+
+        let createdAt =
+            (data["createdAt"] as? Timestamp)?.dateValue() ?? Date()
 
         self.id = document.documentID
         self.fullname = fullname
@@ -43,8 +60,9 @@ extension AppUser {
         self.phone = phone
         self.userType = userType
         self.isDeleted = isDeleted
-        self.createdAt = timestamp.dateValue()
+        self.createdAt = createdAt
     }
+
 }
 
 

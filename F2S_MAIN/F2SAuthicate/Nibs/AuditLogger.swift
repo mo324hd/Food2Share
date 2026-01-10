@@ -15,28 +15,37 @@ struct AuditLogger {
 
     static func log(
         action: String,
-        message: String,
         targetUserId: String? = nil
     ) {
         print("🧾 Attempting to write log:", action)
 
-        let userId = Auth.auth().currentUser?.uid ?? "SYSTEM_ADMIN"
+        let adminId = Auth.auth().currentUser?.uid ?? "SYSTEM_ADMIN"
+
+
+        let actionWithTarget: String
+        if let targetUserId = targetUserId {
+            actionWithTarget = "\(action) - \(targetUserId)"
+        } else {
+            actionWithTarget = action
+        }
 
         let logData: [String: Any] = [
             "timestamp": Timestamp(),
             "type": "admin",
-            "action": action,
-            "userId": userId,
+            "action": actionWithTarget,
+            "userId": adminId,
             "userRole": "admin",
-            "message": message
+            "message": actionWithTarget  
         ]
 
         db.collection("Logs").addDocument(data: logData) { error in
             if let error = error {
-                print("Log write failed:", error)
+                print("❌ Log write failed:", error)
             } else {
-                print("Log written successfully")
+                print("✅ Log written successfully")
             }
         }
     }
+
+
 }

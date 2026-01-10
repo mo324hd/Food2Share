@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAnalytics
+import FirebaseAuth
 
 class SimulateLogsViewController: UIViewController {
     
@@ -15,6 +16,8 @@ class SimulateLogsViewController: UIViewController {
     @IBOutlet weak var btnDonationCreated: UIButton!
     @IBOutlet weak var btnDonationAccepted: UIButton!
     @IBOutlet weak var btnDonationComplete: UIButton!
+    
+    let adminId = Auth.auth().currentUser?.uid ?? "SYSTEM_ADMIN"
     
     
 
@@ -34,7 +37,7 @@ class SimulateLogsViewController: UIViewController {
 
         AuditLogger.log(
             action: "FOOD_ITEM_LISTED",
-            message: "Food item listed by donor"
+            targetUserId: adminId
         )
 
         showConfirmation("Food Item Listed log created")
@@ -44,7 +47,7 @@ class SimulateLogsViewController: UIViewController {
 
         AuditLogger.log(
             action: "DONATION_CREATED",
-            message: "Donation created from listed food item"
+            targetUserId: adminId
         )
 
         showConfirmation("Donation Created log created")
@@ -54,8 +57,7 @@ class SimulateLogsViewController: UIViewController {
 
         AuditLogger.log(
             action: "DONATION_ACCEPTED",
-            message: "Donation accepted by collector"
-        )
+            targetUserId: adminId        )
 
         showConfirmation("Donation Accepted log created")
     }
@@ -64,7 +66,7 @@ class SimulateLogsViewController: UIViewController {
 
         AuditLogger.log(
             action: "DONATION_COMPLETED",
-            message: "Donation marked as completed"
+            targetUserId: adminId
         )
 
         showConfirmation("Donation Completed log created")

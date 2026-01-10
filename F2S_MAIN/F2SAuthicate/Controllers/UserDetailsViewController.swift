@@ -16,6 +16,7 @@ class UserDetailsViewController: UIViewController {
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var roleLabel: UILabel!
     @IBOutlet weak var roleButton: UIButton!
     @IBOutlet weak var deleteUserButton: UIButton!
@@ -44,6 +45,7 @@ class UserDetailsViewController: UIViewController {
            nameLabel.text = user.fullname
            emailLabel.text = user.email
            roleLabel.text = user.userType
+        phoneLabel.text = user.phone
         
         if user.userType.lowercased() == "admin" {
                 roleButton.isEnabled = false
@@ -52,7 +54,12 @@ class UserDetailsViewController: UIViewController {
                 roleButton.isEnabled = true
                 roleButton.alpha = 1.0
             }
-        
+        if user.isDeleted {
+            deleteUserButton.isEnabled = false
+            deleteUserButton.alpha = 0.5
+            deleteUserButton.setTitle("User Deleted", for: .disabled)
+        }
+
         
        }
     
@@ -132,7 +139,6 @@ class UserDetailsViewController: UIViewController {
         
         AuditLogger.log(
                         action: "ROLE_CHANGED",
-                        message: "Admin changed role of \(user.id) to \(newRole)",
                         targetUserId: user.id
                     )
         Analytics.logEvent("Role Updated", parameters: ["User":user.id])
@@ -186,7 +192,6 @@ class UserDetailsViewController: UIViewController {
                 
                 AuditLogger.log(
                                 action: "USER_DELETED",
-                                message: "Admin deleted user \(user.id)",
                                 targetUserId: user.id
                             )
 
@@ -237,7 +242,6 @@ class UserDetailsViewController: UIViewController {
                 
                 AuditLogger.log(
                                action: "USER_RESTORED",
-                               message: "Admin restored user \(user.id)",
                                targetUserId: user.id
                            )
 

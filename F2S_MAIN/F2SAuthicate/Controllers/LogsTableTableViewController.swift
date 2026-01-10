@@ -29,32 +29,38 @@ class LogsTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     func colorForLog(_ log: AppLog) -> UIColor {
-        switch log.action {
-        case "USER_DELETED":
+        let action = log.action.uppercased()
+
+        if action.hasPrefix("USER_DELETED") {
             return .systemRed
-        case "USER_RESTORED":
-            return .systemGreen
-        case "ROLE_CHANGED":
-            return .systemOrange
-        case "LOGIN":
-            return .systemBlue
-        case "LOGOUT":
-            return .systemPurple
-        case "DONATION_COMPLETED":
-                return .systemPurple
-
-            case "DONATION_ACCEPTED":
-                return .systemGreen
-
-            case "DONATION_CREATED":
-                return .systemBlue
-
-            case "FOOD_ITEM_LISTED":
-                return .systemOrange
-        default:
-            // System logs or unknown actions
-            return log.type == "system" ? .secondaryLabel : .label
         }
+        if action.hasPrefix("USER_RESTORED") {
+            return .systemGreen
+        }
+        if action.hasPrefix("ROLE_CHANGED") {
+            return .systemOrange
+        }
+        if action.hasPrefix("LOGIN") {
+            return .systemBlue
+        }
+        if action.hasPrefix("LOGOUT") {
+            return .systemPurple
+        }
+        if action.hasPrefix("DONATION_COMPLETED") {
+            return .systemPurple
+        }
+        if action.hasPrefix("DONATION_ACCEPTED") {
+            return .systemGreen
+        }
+        if action.hasPrefix("DONATION_CREATED") {
+            return .systemBlue
+        }
+        if action.hasPrefix("FOOD_ITEM_LISTED") {
+            return .systemOrange
+        }
+
+        // System logs or unknown actions
+        return log.type == "system" ? .secondaryLabel : .label
     }
 
     override func viewDidLoad() {
@@ -273,6 +279,8 @@ class LogsTableViewController: UITableViewController, UISearchResultsUpdating {
         cell.textLabel?.text = log.action
         cell.textLabel?.font = .systemFont(ofSize: 16, weight: .semibold)
         cell.textLabel?.textColor = colorForLog(log)
+        cell.textLabel?.numberOfLines = 0  
+        cell.textLabel?.lineBreakMode = .byWordWrapping
 
 
         let source = log.type.uppercased()
