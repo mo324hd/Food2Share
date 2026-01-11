@@ -11,7 +11,7 @@ class FoodItemListTableViewController: UITableViewController {
     
     @IBOutlet weak var FoodList: UITableView!
     
-    let foodItems: [FoodItem] = [
+    var foodItems: [FoodItem] = [
         FoodItem(id: "F001", name: "Bananas", category: "Fruits", quantity_Size: "1.2 kg", dateValue: "2026-01-10", status: "Fresh", usage_Condition: "Ready to eat"),
         FoodItem(id: "F002", name: "Whole Milk", category: "Dairy", quantity_Size: "1 L", dateValue: "2026-01-15", status: "Cold Storage", usage_Condition: "Keep refrigerated"),
         FoodItem(id: "F003", name: "Cheddar Cheese", category: "Dairy", quantity_Size: "200 g", dateValue: "2026-03-01", status: "Fresh", usage_Condition: "Keep sealed"),
@@ -37,8 +37,10 @@ class FoodItemListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        FoodList.dataSource = self
+        FoodList.delegate = self
+        
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
@@ -56,35 +58,51 @@ class FoodItemListTableViewController: UITableViewController {
         return foodItems.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FoodItemCell", for: indexPath)
+        let foodItem = foodItems[indexPath.row]
+        var content = cell.defaultContentConfiguration()
+        content.text = foodItem.name
+        content.secondaryText = "\(foodItem.status)"
+        cell.contentConfiguration = content
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "ToFoodItemInfo", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToFoodItemInfo" {
+            if let destination = segue.destination as? FoodItemInfoViewController {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    destination.receivedFoodItem = foodItems[indexPath.row]
+                }
+            }
+        }
+    }
 
-    /*
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            foodItems.remove(at: indexPath.row)
+            FoodList.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            print("hello")
+            //performSegue(withIdentifier: "ToAddFoodItem", sender: self)
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

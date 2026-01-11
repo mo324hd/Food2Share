@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +28,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="QkP-j2-gA7" kind="show" id="WGM-0D-6AJ"/>
+                                            <segue destination="QkP-j2-gA7" kind="show" identifier="ToFoodItemInfo" id="WGM-0D-6AJ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -118,7 +117,7 @@
                                                                                     <constraint firstItem="qD3-3K-23G" firstAttribute="centerY" secondItem="nBY-xb-IOZ" secondAttribute="centerY" id="i89-lH-Syz"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ulN-TJ-pwj">
+                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulN-TJ-pwj">
                                                                                 <rect key="frame" x="8" y="46" width="155.66666666666666" height="33"/>
                                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                                 <color key="textColor" systemColor="labelColor"/>
@@ -158,7 +157,7 @@
                                                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sSp-LB-Hzq" secondAttribute="trailing" constant="20" symbolic="YES" id="paY-mq-QTV"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="p2V-ND-4Du">
+                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2V-ND-4Du">
                                                                                 <rect key="frame" x="0.0" y="46" width="163" height="33"/>
                                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                                 <color key="textColor" systemColor="labelColor"/>
@@ -203,7 +202,7 @@
                                                                                     <constraint firstItem="9ZX-Is-lpN" firstAttribute="top" secondItem="Ws2-XH-818" secondAttribute="top" constant="5" id="Qjc-gE-3S1"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uvP-gu-oSd">
+                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uvP-gu-oSd">
                                                                                 <rect key="frame" x="8" y="38" width="155.66666666666666" height="41"/>
                                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                                 <color key="textColor" systemColor="labelColor"/>
@@ -243,7 +242,7 @@
                                                                                     <constraint firstItem="vDK-CE-TdS" firstAttribute="leading" secondItem="q80-IG-HXp" secondAttribute="leadingMargin" id="cfx-nF-ftA"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-7j-xgg">
+                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEp-7j-xgg">
                                                                                 <rect key="frame" x="0.0" y="38" width="163" height="41"/>
                                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                                 <color key="textColor" systemColor="labelColor"/>
@@ -285,7 +284,7 @@
                                                                             <constraint firstItem="jfG-C4-g1U" firstAttribute="centerY" secondItem="1tU-XB-YzW" secondAttribute="centerY" id="iFY-Op-vAI"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="W9b-lj-kik">
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9b-lj-kik">
                                                                         <rect key="frame" x="8" y="38" width="327" height="41"/>
                                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                         <color key="textColor" systemColor="labelColor"/>
@@ -338,23 +337,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="FoodItemInfo" id="bsW-gJ-Gc0">
                         <barButtonItem key="backBarButtonItem" title="Back" id="9Jt-4x-KPf"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="gZf-zm-dAW">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t0v-CC-Njx">
-                                <rect key="frame" x="304" y="11" width="73" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <menu key="menu" id="GBh-yh-b5A">
-                                    <children>
-                                        <command title="Update" id="TPF-R1-4aO"/>
-                                        <command title="Delete" id="YMi-0z-yhU"/>
-                                    </children>
-                                </menu>
-                                <state key="normal" title="Button" image="ellipsis" catalog="system"/>
-                            </button>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="DeleteButton" destination="YMi-0z-yhU" id="3zh-zE-otw"/>
-                        <outlet property="UpdateButton" destination="TPF-R1-4aO" id="maq-H3-6CS"/>
+                        <outlet property="DateText" destination="uvP-gu-oSd" id="stx-k7-Gny"/>
+                        <outlet property="QuantitySizeText" destination="p2V-ND-4Du" id="1Pf-0r-xWd"/>
+                        <outlet property="StatusText" destination="aEp-7j-xgg" id="uRC-on-Id0"/>
+                        <outlet property="UsageConditionText" destination="W9b-lj-kik" id="toH-yB-709"/>
+                        <outlet property="categoryText" destination="ulN-TJ-pwj" id="oc1-xI-WS1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4g-Pd-YQ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -364,7 +353,7 @@
         <!--AddFoodItem-->
         <scene sceneID="JqA-DP-ron">
             <objects>
-                <viewController title="AddFoodItem" id="9nq-Gd-dmr" sceneMemberID="viewController">
+                <viewController title="AddFoodItem" id="9nq-Gd-dmr" customClass="AddFoodItemViewController" customModule="Food2Share_Main" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pzd-Ws-HfA">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -562,12 +551,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLj-kJ-f7w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884.7328244274809" y="-756.33802816901414"/>
+            <point key="canvasLocation" x="981" y="-754"/>
         </scene>
         <!--UpdateFoodItem-->
         <scene sceneID="Ez6-Ke-LKs">
             <objects>
-                <viewController title="UpdateFoodItem" id="q1A-MY-T3D" sceneMemberID="viewController">
+                <viewController title="UpdateFoodItem" id="q1A-MY-T3D" customClass="UpdateFoodItemViewController" customModule="Food2Share_Main" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ba8-f3-IOp">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -815,7 +804,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Kj-Rd-ko4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2806.8702290076335" y="-35.211267605633807"/>
+            <point key="canvasLocation" x="1885" y="-754"/>
         </scene>
         <!--OrgDiscovery-->
         <scene sceneID="phV-Y0-nKB">
@@ -1015,7 +1004,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="WtI-dF-UXE" kind="show" id="GAS-wd-emt"/>
+                                            <segue destination="WtI-dF-UXE" kind="show" identifier="ToOrgInfo" id="GAS-wd-emt"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1036,6 +1025,10 @@
                     <navigationItem key="navigationItem" title="Search" id="usA-C3-bzV">
                         <barButtonItem key="backBarButtonItem" title="Back" id="D3u-YJ-5xr"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ResultList" destination="vYH-N5-O98" id="Wgk-9l-A4s"/>
+                        <outlet property="SearchBar" destination="cHj-27-0rq" id="aNe-mr-p1U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ela-a8-nuX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1044,7 +1037,7 @@
         <!--OrgInfo-->
         <scene sceneID="HmU-B1-NJd">
             <objects>
-                <viewController title="OrgInfo" id="WtI-dF-UXE" sceneMemberID="viewController">
+                <viewController title="OrgInfo" id="WtI-dF-UXE" customClass="OrgInfoViewController" customModule="Food2Share_Main" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pbs-UC-xCm">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1073,7 +1066,7 @@
                                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </buttonConfiguration>
                                                 <connections>
-                                                    <segue destination="sjg-pB-XpK" kind="show" id="rEk-84-Yl0"/>
+                                                    <segue destination="sjg-pB-XpK" kind="show" identifier="ToCampaignsList" id="rEk-84-Yl0"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1117,7 +1110,7 @@
                                                                             <constraint firstItem="c2n-SP-Wa1" firstAttribute="centerY" secondItem="J7n-D3-osp" secondAttribute="centerY" id="wbz-DZ-MbG"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="frG-uf-Q3c">
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frG-uf-Q3c">
                                                                         <rect key="frame" x="8" y="41" width="327" height="82"/>
                                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                         <color key="textColor" systemColor="labelColor"/>
@@ -1160,7 +1153,7 @@
                                                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xFH-Zs-BhL" secondAttribute="trailing" constant="20" symbolic="YES" id="b8S-T3-las"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pOD-OJ-xoz">
+                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOD-OJ-xoz">
                                                                                 <rect key="frame" x="8" y="46" width="155.66666666666666" height="76"/>
                                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                                 <color key="textColor" systemColor="labelColor"/>
@@ -1200,7 +1193,7 @@
                                                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xsg-Lo-31F" secondAttribute="trailing" constant="20" symbolic="YES" id="nWJ-UX-Je0"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2oy-BR-R01">
+                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oy-BR-R01">
                                                                                 <rect key="frame" x="8" y="46" width="155.33333333333334" height="76"/>
                                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                                 <color key="textColor" systemColor="labelColor"/>
@@ -1281,7 +1274,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="w0x-oZ-vij" kind="show" id="G2m-sh-h1S"/>
+                                            <segue destination="w0x-oZ-vij" kind="show" identifier="ToCampaigninfo" id="G2m-sh-h1S"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1307,7 +1300,7 @@
         <!--CampaignInfo-->
         <scene sceneID="3ka-Fb-E98">
             <objects>
-                <viewController title="CampaignInfo" id="w0x-oZ-vij" sceneMemberID="viewController">
+                <viewController title="CampaignInfo" id="w0x-oZ-vij" customClass="CampInfoViewController" customModule="Food2Share_Main" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AO6-EE-cF4">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1415,7 +1408,7 @@
                                                                                     <constraint firstItem="xib-Iq-1RD" firstAttribute="leading" secondItem="N71-bd-d4r" secondAttribute="leadingMargin" id="djH-qE-Wua"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Lx1-Sw-xTd">
+                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lx1-Sw-xTd">
                                                                                 <rect key="frame" x="136" y="0.0" width="199" height="43.666666666666664"/>
                                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                                 <color key="textColor" systemColor="labelColor"/>
@@ -1455,7 +1448,7 @@
                                                                                     <constraint firstItem="NrH-Rd-5u0" firstAttribute="top" secondItem="EyU-Fk-3zA" secondAttribute="top" constant="4" id="p0P-YH-Zek"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fgV-hl-28n">
+                                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgV-hl-28n">
                                                                                 <rect key="frame" x="182" y="0.0" width="153" height="43.333333333333336"/>
                                                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                                 <color key="textColor" systemColor="labelColor"/>
@@ -1479,7 +1472,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jaj-XE-xZL">
                                                                 <rect key="frame" x="0.0" y="174" width="343" height="87"/>
                                                                 <subviews>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VRG-X3-j0G">
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRG-X3-j0G">
                                                                         <rect key="frame" x="8" y="38" width="327" height="49"/>
                                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                         <color key="textColor" systemColor="labelColor"/>
@@ -1595,7 +1588,6 @@
     </scenes>
     <resources>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
-        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

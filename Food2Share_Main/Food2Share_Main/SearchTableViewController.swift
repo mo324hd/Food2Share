@@ -7,16 +7,26 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController {
+class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
 
+    @IBOutlet weak var ResultList: UITableView!
+    var originalData: [Organization]
+    var filteredData = [String]()
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        ResultList.dataSource = self
+        ResultList.delegate = self
+        
+        searchController.searchResultsUpdating = self
+        searchController.obscuresBackgroundDuringPresentation = false // Don't hide the main view
+        searchController.searchBar.placeholder = "Search Organizations/Campaigns"
+        
+        navigationItem.searchController = searchController
+        
+        definesPresentationContext = true
     }
 
     // MARK: - Table view data source
@@ -28,18 +38,40 @@ class SearchTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return isFiltering ? filteredData.count : originalData.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath)
+        let fruit: String
+               
+               // Determine which data source to use
+            if isFiltering {
+                   fruit = filteredData[indexPath.row]
+               } else {
+                   fruit = originalData[indexPath.row]
+               }
+               
+        cell.textLabel?.text = fruit
         return cell
     }
-    */
+    
+    func updateSearchResults(for searchController: UISearchController) {
+            let searchBar = searchController.searchBar
+            filterContentForSearchText(searchBar.text!)
+        }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredData = originalData.filter { (fruit: String) -> Bool in
+            // Check if the fruit name contains the search text (case-insensitive)
+            return fruit.lowercased().contains(searchText.lowercased())
+        }
+        tableView.reloadData()
+    }
+    
+    var isFiltering: Bool {
+            return searchController.isActive && !searchController.searchBar.text!.isEmpty
+        }
 
     /*
     // Override to support conditional editing of the table view.

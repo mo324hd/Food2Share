@@ -9,17 +9,27 @@ import UIKit
 
 class FoodItemInfoViewController: UIViewController {
 
+    var receivedFoodItem: FoodItem?
     
-    @IBOutlet weak var DeleteButton: UICommand!
-    @IBOutlet weak var UpdateButton: UICommand!
-    
+    @IBOutlet weak var UsageConditionText: UITextView!
+    @IBOutlet weak var StatusText: UITextView!
+    @IBOutlet weak var DateText: UITextView!
+    @IBOutlet weak var QuantitySizeText: UITextView!
+    @IBOutlet weak var categoryText: UITextView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if let foodItem = receivedFoodItem {
+            UsageConditionText.text = foodItem.usage_Condition
+            StatusText.text = foodItem.status
+            DateText.text = foodItem.dateValue
+            QuantitySizeText.text = foodItem.quantity_Size
+            categoryText.text = foodItem.category
+            self.title = foodItem.name
+        }
     }
     
-
     /*
     // MARK: - Navigation
 
