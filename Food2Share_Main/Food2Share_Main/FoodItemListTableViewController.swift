@@ -9,7 +9,7 @@ import UIKit
 
 class FoodItemListTableViewController: UITableViewController {
     
-    @IBOutlet weak var FoodList: UITableView!
+    @IBOutlet var FoodList: UITableView!
     
     var foodItems: [FoodItem] = [
         FoodItem(id: "F001", name: "Bananas", category: "Fruits", quantity_Size: "1.2 kg", dateValue: "2026-01-10", status: "Fresh", usage_Condition: "Ready to eat"),
@@ -63,9 +63,9 @@ class FoodItemListTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodItemCell", for: indexPath)
         let foodItem = foodItems[indexPath.row]
+        
         var content = cell.defaultContentConfiguration()
         content.text = foodItem.name
-        content.secondaryText = "\(foodItem.status)"
         cell.contentConfiguration = content
         return cell
     }
@@ -79,7 +79,7 @@ class FoodItemListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToFoodItemInfo" {
             if let destination = segue.destination as? FoodItemInfoViewController {
-                if let indexPath = tableView.indexPathForSelectedRow {
+                if let indexPath = FoodList.indexPathForSelectedRow {
                     destination.receivedFoodItem = foodItems[indexPath.row]
                 }
             }

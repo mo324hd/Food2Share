@@ -7,15 +7,6 @@
 
 import Foundation
 
-struct Organization {
-    var id: String
-    var name: String
-    var campaigns: [Campaign]
-    var description: String
-    var address: String
-    var communication: String
-}
-
 struct Campaign {
     var id: String
     var name: String
@@ -24,6 +15,15 @@ struct Campaign {
     var organizedBy: String
     var dateValue: String
     var description: String
+}
+
+struct Organization {
+    var id: String
+    var name: String
+    var campaigns: [Campaign]
+    var description: String
+    var address: String
+    var communication: String
 }
 
 struct FoodItem {
